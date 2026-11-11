@@ -1,0 +1,128 @@
+{
+  "_ghi_chu": "Dữ liệu CÔNG KHAI. Không ghi chủ đề hay ý tưởng của các đội vào đây.",
+  "ten": "HR Hackathon 2026",
+  "thong_diep": "Biến ý tưởng thành thực tế, có tính ứng dụng cao.",
+  "tuan_hien_tai": null,
+  "_tuan_hien_tai_huong_dan": "Để null thì trang tự tính theo ngày. Muốn ép một tuần cụ thể thì ghi số 1 đến 5.",
+  "ngay_hr_day": "2026-12-15",
+  "ba_buoc": [
+    {
+      "tieu_de": "Chọn một bài toán HR có thật",
+      "mo_ta": "Một việc mà đồng nghiệp đang làm tốn thời gian hoặc làm chưa tốt."
+    },
+    {
+      "tieu_de": "Dùng AI dựng sản phẩm dùng thử được",
+      "mo_ta": "App, game, dashboard hay công cụ. Không cần biết lập trình."
+    },
+    {
+      "tieu_de": "Demo tại HR Day",
+      "mo_ta": "Trình diễn trực tiếp và để người dùng thật dùng thử."
+    }
+  ],
+  "quy_tac_vang": "Sản phẩm của chúng tôi giúp [ai] làm [việc gì] nhanh hơn / tốt hơn.",
+  "lo_trinh": [
+    {
+      "tuan": 1,
+      "tu": "2026-11-05",
+      "den": "2026-11-11",
+      "tieu_de": "Lập Team",
+      "mo_ta": "Lập Team, bầu đội trưởng, thảo luận các ý tưởng.",
+      "moc": "05/11: KICKOFF",
+      "giai_doan": "khoi_dong"
+    },
+    {
+      "tuan": 2,
+      "tu": "2026-11-12",
+      "den": "2026-11-18",
+      "tieu_de": "Xác định chủ đề và kế hoạch thực hiện",
+      "mo_ta": "Các Team thống nhất chủ đề và gửi đến BTC (Doanh), thông tin này sẽ được bảo mật cho đến buổi trình bày. Team trao đổi và thống nhất kế hoạch, phân chia vai trò thực hiện.",
+      "moc": "13/11: các Team gửi chủ đề cho BTC",
+      "giai_doan": "thong_nhat"
+    },
+    {
+      "tuan": 3,
+      "tu": "2026-11-19",
+      "den": "2026-11-25",
+      "tieu_de": "Thực hiện theo kế hoạch, bước đầu tạo ra sản phẩm.",
+      "mo_ta": "Tạo ra bản demo đầu tiên.",
+      "moc": null,
+      "giai_doan": "xay_dung"
+    },
+    {
+      "tuan": 4,
+      "tu": "2026-11-26",
+      "den": "2026-12-02",
+      "tieu_de": "Dùng thử và chỉnh sửa",
+      "mo_ta": "Đưa sản phẩm vào dùng thử, ứng dụng trong thực tế. Lấy phản hồi, điều chỉnh UI/UX cho phù hợp. Gửi đến BTC các hình ảnh, tư liệu hoạt động nhóm để BTC xây dựng Video (ưu tiên hình ảnh vui nhộn, video lột tả chân thực quá trình thực hiện, ...)",
+      "moc": "01/12: các Team gửi cập nhật về tiến độ, gửi hình ảnh thể hiện các buổi làm việc của Team",
+      "giai_doan": "hoan_thien"
+    },
+    {
+      "tuan": 5,
+      "tu": "2026-12-03",
+      "den": "2026-12-09",
+      "tieu_de": "Đóng gói sản phẩm",
+      "mo_ta": "Đóng gói sản phẩm, xây dựng slide trình bày. Thực hành phân vai và demo trình bày.",
+      "moc": "10/12: các Team gửi Slide đến BTC",
+      "giai_doan": "hoan_thien"
+    }
+  ],
+  "tieu_chi": [
+    {
+      "ten": "Tính khả thi",
+      "mo_ta": "Sản phẩm chạy được và dùng thử được."
+    },
+    {
+      "ten": "Mức độ tác động",
+      "mo_ta": "Giải đúng một việc HR có thật, cho đúng người."
+    },
+    {
+      "ten": "Phạm vi sử dụng",
+      "mo_ta": "Các đơn vị khác có thể dùng lại."
+    }
+  ],
+  "the_le": [
+    "Thời gian trình bày: tối đa 30 phút (đã bao gồm cả thời gian cho khán giả dùng thử nếu có).",
+    "Các Team đảm bảo tiến độ theo tuần. Tất cả các thành viên cùng tham gia xây dựng và trình bày.",
+    "Chủ đề sản phẩm được giữ kín đến lúc Team trình bày tại HR DAY 15/12.",
+    "Slide trình bày sẽ được cập nhật lên trang sau khi chương trình kết thúc."
+  ],
+  "hr_day": {
+    "ngay": "2026-12-15",
+    "mo_ta": "",
+    "lich": [],
+    "_mo_ta_huong_dan": "Để trống: trang ghi 'Chi tiết chương trình sẽ được cập nhật sau.' Điền khi BTC chốt nội dung ngày HR Day.",
+    "giai_doan": "trinh_bay"
+  },
+  "ten_ngan_mang": {
+    "Đào tạo": "L&D"
+  },
+  "giai_doan_tien_do": [
+    {
+      "ma": "khoi_dong",
+      "ten": "Khởi động",
+      "mau": "#FFF1CF"
+    },
+    {
+      "ma": "thong_nhat",
+      "ten": "Thống nhất chủ đề",
+      "mau": "#EBC24A"
+    },
+    {
+      "ma": "xay_dung",
+      "ten": "Xây dựng",
+      "mau": "#A57CE8"
+    },
+    {
+      "ma": "hoan_thien",
+      "ten": "Hoàn thiện",
+      "mau": "#5FBF86"
+    },
+    {
+      "ma": "trinh_bay",
+      "ten": "Trình bày",
+      "mau": "#5C9EEA"
+    }
+  ],
+  "_giai_doan_huong_dan": "Màu tiến độ của từng team trong chòm sao. Đổi tiến độ: sửa 'tien_do' của team trong teams.json thành một trong các mã ở đây."
+}
