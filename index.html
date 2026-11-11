@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>HR Day Hackathon 2026</title>
+<meta name="description" content="Trang theo dõi HR Day Hackathon 2026: 9 Team, 5 tuần, trình bày tại HR Day 15/12.">
+<meta name="theme-color" content="#1A2A42">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23234C87'/><rect x='8' y='8' width='7' height='16' fill='%23fff'/><rect x='17' y='8' width='7' height='7' fill='%23B88A2D'/></svg>">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.min.js","three/addons/":"./vendor/three/addons/"}}</script>
+</head>
+<body>
+<div class="pv" id="pv" hidden><span>Đang xem trước điểm từ trang quản trị (chỉ trên máy này)</span><button type="button" id="pv-off">Tắt xem trước</button></div>
+<a class="skip" href="#noi-dung">Bỏ qua, đến nội dung</a>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="#mo-dau" aria-label="HR Day Hackathon 2026, về đầu trang">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#234C87"/><rect x="8" y="8" width="7" height="16" fill="#fff"/><rect x="17" y="8" width="7" height="7" fill="#B88A2D"/></svg>
+      <span>HR Day Hackathon <b>2026</b></span>
+    </a>
+    <nav class="nav__links" aria-label="Mục chính">
+      <a href="#lo-trinh">Lộ trình</a>
+      <a href="#cac-doi">Các Team</a>
+      <a href="#tieu-chi">Tiêu chí</a>
+      <a href="#cap-nhat">Cập nhật</a>
+      <a href="#xep-hang">Xếp hạng</a>
+      <a href="#binh-chon">Bình chọn</a>
+      <a href="#hr-day">HR Day</a>
+    </nav>
+    <a class="btn btn--gold btn--sm" href="#cac-doi">Xem các Team</a>
+  </div>
+</header>
+
+<main id="noi-dung">
+
+  <!-- 1 · HERO -->
+  <section class="sec sec--hero" id="mo-dau" data-ground="dark">
+    <div class="wrap hero">
+      <div class="hero__text">
+        <p class="eyebrow rv" data-ed="html:mo-dau.1">Khối HR · Tập đoàn TH</p>
+        <h1 class="h1 rv" data-ed="html:mo-dau.2">HR Day<br>Hackathon <mark class="hl">2026</mark></h1>
+        <p class="lede rv" id="hero-lede" data-ed="program.thong_diep"></p>
+        <div class="hero__cta rv">
+          <a class="btn btn--gold" href="#cac-doi">Xem các Team</a>
+          <a class="btn btn--ghost" href="#lo-trinh">Xem lộ trình</a>
+        </div>
+        <dl class="stats rv">
+          <div><dt><span data-count="9">0</span></dt><dd>Team tham gia</dd></div>
+          <div><dt><span data-count="51" id="stat-people">0</span></dt><dd>Thành viên</dd></div>
+          <div><dt><span data-count="5">0</span></dt><dd>Tuần thực hiện</dd></div>
+        </dl>
+      </div>
+      <figure class="hero__media rv">
+        <div class="vcard">
+          <video id="kickoff" muted loop playsinline preload="none"
+                 aria-label="Video kickoff HR Hackathon 2026"
+                 data-src="media/kickoff-play.mp4" data-src-mobile="media/kickoff-play-m.mp4"
+                 poster="media/kickoff-poster.webp" data-poster-mobile="media/kickoff-poster-m.webp"></video>
+          <button class="vcard__play" id="kickoff-play" type="button" aria-label="Phát video kickoff">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+          </button>
+        </div>
+        <figcaption><span class="eyebrow eyebrow--s">Khởi động</span> Video kickoff · 05/11/2026</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 2 · LỘ TRÌNH -->
+  <section class="sec sec--road" id="lo-trinh" data-ground="light">
+    <div class="wrap">
+      <header class="sec__head">
+        <p class="eyebrow rv" data-ed="html:lo-trinh.1">Lộ trình 5 tuần</p>
+        <h2 class="h2 rv" data-ed="html:lo-trinh.2">Từ một ý tưởng<br>đến <mark class="hl">sân khấu HR Day</mark></h2>
+        <p class="sub rv" id="road-sub" data-ed="html:lo-trinh.3">Đang ở chặng nào, sắp tới là gì. Bấm vào từng tuần để xem chi tiết.</p>
+      </header>
+      <div class="rbar rv" id="road-bar" role="group" aria-label="Tổng quan lộ trình"></div>
+      <button type="button" class="road__back" id="road-back" hidden>← Quay lại tuần này</button>
+      <div class="road is-collapsed" id="road">
+        <div class="road__line" aria-hidden="true"><i id="road-fill"></i></div>
+        <ol class="road__list" id="road-list"></ol>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3 · CÁC ĐỘI · CHÒM SAO 3D -->
+  <section class="sec sec--teams" id="cac-doi" data-ground="dark">
+    <div class="wrap">
+      <header class="sec__head sec__head--row">
+        <div>
+          <p class="eyebrow rv" id="teams-eyebrow">9 Team · 51 thành viên</p>
+          <h2 class="h2 rv" data-ed="html:cac-doi.1">9 Team.<br>Ý tưởng phát triển<br><mark class="hl">về nhân sự</mark></h2>
+        </div>
+        <p class="sub rv" data-ed="html:cac-doi.2">Mỗi điểm sáng là một Team. Chạm vào một điểm để xem thành viên của Team.</p>
+      </header>
+    </div>
+
+    <div class="stage" id="stage" data-mode="idle">
+      <canvas class="stage__canvas" id="galaxy" aria-hidden="true"></canvas>
+      <div class="legend" id="legend" aria-label="Chú thích tiến độ">
+        <p class="legend__t" data-ed="html:cac-doi.3"><span class="legend__cube" aria-hidden="true"></span>Khối Nhân sự</p>
+        <p class="legend__s" data-ed="html:cac-doi.4">Khối lập phương là Khối Nhân sự chung. Màu mỗi điểm cho biết tiến độ của Team.</p>
+        <ul id="legend-list"></ul>
+      </div>
+      <div class="stage__hint" id="stage-hint" aria-hidden="true"></div>
+      <div class="stage__tip" id="stage-tip" role="status" aria-live="polite"></div>
+      <div class="stage__tools">
+        <button class="tool tool--activate" id="btn-activate" type="button">Chạm để xoay</button>
+        <button class="tool" id="btn-zin" type="button" aria-label="Phóng to">+</button>
+        <button class="tool" id="btn-zout" type="button" aria-label="Thu nhỏ">−</button>
+        <button class="tool" id="btn-reset" type="button">Về góc nhìn ban đầu</button>
+      </div>
+      <div class="stage__fallback" id="stage-fallback" hidden></div>
+    </div>
+
+    <div class="wrap">
+      <div class="quick" role="group" aria-label="Chọn nhanh một Team">
+        <span class="quick__label" data-ed="html:cac-doi.5">Chọn nhanh</span>
+        <div class="quick__row" id="quick"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · TIÊU CHÍ -->
+  <section class="sec sec--criteria" id="tieu-chi" data-ground="light">
+    <div class="wrap">
+      <header class="sec__head">
+        <p class="eyebrow rv" data-ed="html:tieu-chi.1">Tiêu chí chấm</p>
+        <h2 class="h2 rv" data-ed="html:tieu-chi.2">Các tiêu chí<br><mark class="hl">quan trọng</mark></h2>
+      </header>
+      <figure class="golden rv">
+        <span class="golden__label" data-ed="html:tieu-chi.3">Nguyên tắc vàng</span>
+        <blockquote id="golden"></blockquote>
+      </figure>
+      <div class="crit" id="criteria"></div>
+      <div class="rules rv">
+        <h3 class="h3" data-ed="html:tieu-chi.4">Thể lệ ngắn gọn</h3>
+        <ul id="rules"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · CẬP NHẬT -->
+  <section class="sec sec--log" id="cap-nhat" data-ground="light">
+    <div class="wrap">
+      <header class="sec__head sec__head--row">
+        <div>
+          <p class="eyebrow rv" data-ed="html:cap-nhat.1">Nhật ký hoạt động</p>
+          <h2 class="h2 rv" data-ed="html:cap-nhat.2">Hành trình <mark class="hl">của các Team</mark></h2>
+        </div>
+        <p class="sub rv" data-ed="html:cap-nhat.3">Ảnh và tin tiến độ chỉ ghi lại hành trình, không lộ chủ đề của Team nào.</p>
+      </header>
+      <ol class="log" id="log"></ol>
+    </div>
+  </section>
+
+  <!-- 5b · BẢNG XẾP HẠNG -->
+  <section class="sec sec--rank" id="xep-hang" data-ground="dark">
+    <div class="wrap">
+      <header class="sec__head sec__head--row">
+        <div>
+          <p class="eyebrow rv" data-ed="html:xep-hang.1">Bảng xếp hạng</p>
+          <h2 class="h2 rv" data-ed="html:xep-hang.2">Kết quả <mark class="hl">HR Day</mark></h2>
+        </div>
+        <p class="sub rv" id="rank-sub">Điểm là trung bình của các giám khảo theo các tiêu chí quan trọng.</p>
+      </header>
+      <div id="rank"></div>
+    </div>
+  </section>
+
+  <!-- 5c · BÌNH CHỌN TEAM YÊU THÍCH -->
+  <section class="sec sec--vote" id="binh-chon" data-ground="dark">
+    <div class="wrap">
+      <header class="sec__head sec__head--row">
+        <div>
+          <p class="eyebrow rv" data-ed="html:binh-chon.1">Giải thưởng</p>
+          <h2 class="h2 rv" data-ed="html:binh-chon.2">Team được <mark class="hl">yêu thích nhất</mark></h2>
+        </div>
+        <p class="sub rv" data-ed="html:binh-chon.3">Sau HR Day, mỗi thành viên bình chọn một Team mình yêu thích nhất. Không bình chọn cho Team của mình.</p>
+      </header>
+      <div class="vote" id="vote"></div>
+    </div>
+  </section>
+
+  <!-- 6 · HR DAY -->
+  <section class="sec sec--close" id="hr-day" data-ground="dark">
+    <div class="wrap close">
+      <p class="eyebrow rv" data-ed="html:hr-day.1">15 · 12 · 2026</p>
+      <h2 class="h1 h1--close rv" data-ed="html:hr-day.2">HR Day.<br>Các Team <mark class="hl">trình bày.</mark></h2>
+      <p class="lede rv" id="close-lede"></p>
+      <div class="count rv" id="countdown" aria-live="off">
+        <div><b id="cd-d">--</b><span>ngày</span></div>
+        <div><b id="cd-h">--</b><span>giờ</span></div>
+        <div><b id="cd-m">--</b><span>phút</span></div>
+      </div>
+      <p class="sr-only" id="cd-sr"></p>
+      <div class="hero__cta rv">
+        <a class="btn btn--gold" href="hr-day-2026.ics" download>Thêm vào lịch</a>
+        <a class="btn btn--ghost" href="#cac-doi">Xem lại các Team</a>
+      </div>
+      <footer class="foot">
+        <span>HR Day Hackathon 2026 · Khối HR Tập đoàn TH</span>
+        <span id="foot-updated"></span>
+      </footer>
+    </div>
+  </section>
+</main>
+
+<!-- Bảng thông tin đội -->
+<aside class="panel" id="panel" aria-hidden="true" aria-labelledby="panel-title" role="dialog" aria-modal="false">
+  <div class="panel__grab" aria-hidden="true"></div>
+  <button class="panel__x" id="panel-close" type="button" aria-label="Đóng">×</button>
+  <div class="panel__body" id="panel-body"></div>
+</aside>
+
+<!-- Xem ảnh nhật ký: phóng ra từ ảnh nhỏ -->
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Xem ảnh">
+  <div class="lb__bg" data-lb-close></div>
+  <img class="lb__img" id="lb-img" alt="">
+  <div class="lb__bar">
+    <span class="lb__cap" id="lb-cap"></span>
+    <span class="lb__n" id="lb-n"></span>
+  </div>
+  <button class="lb__btn lb__x" type="button" aria-label="Đóng" data-lb-close>×</button>
+  <button class="lb__btn lb__prev" type="button" aria-label="Ảnh trước" data-lb="-1">‹</button>
+  <button class="lb__btn lb__next" type="button" aria-label="Ảnh sau" data-lb="1">›</button>
+</div>
+
+<!-- Trình xem nội dung -->
+<dialog class="viewer" id="viewer" aria-labelledby="viewer-title">
+  <div class="viewer__in" id="viewer-body"></div>
+</dialog>
+
+<!-- Trang quản trị (#quan-tri) -->
+<div class="adm" id="admin" hidden></div>
+
+<noscript><p class="noscript">Trang cần bật JavaScript để hiển thị dữ liệu.</p></noscript>
+<script type="module" src="js/site.js"></script>
+</body>
+</html>

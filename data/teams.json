@@ -1,0 +1,410 @@
+{
+  "_ghi_chu": "Dữ liệu CÔNG KHAI. Tuyệt đối không ghi chủ đề/ý tưởng vào file này trước khi công bố.",
+  "cap_nhat_luc": "2026-11-10",
+  "doi": [
+    {
+      "so": 1,
+      "mang": "C&B",
+      "ten_nhom": null,
+      "doi_truong": null,
+      "trang_thai_y_tuong": "chua_chot",
+      "thanh_vien": [
+        {
+          "ten": "Tạ Thu Hà",
+          "don_vi": "THG",
+          "email": ""
+        },
+        {
+          "ten": "Vi Thị Kim Chi",
+          "don_vi": "NASU",
+          "email": ""
+        },
+        {
+          "ten": "Nguyễn Thị Hà",
+          "don_vi": "THM",
+          "email": ""
+        },
+        {
+          "ten": "Nguyễn Thị Ngọc",
+          "don_vi": "TH Bắc Ninh",
+          "email": ""
+        },
+        {
+          "ten": "Hà Minh Nguyệt",
+          "don_vi": "TH Hà Giang",
+          "email": ""
+        },
+        {
+          "ten": "Lưu Thị Thu Hiền",
+          "don_vi": "THMF",
+          "email": ""
+        }
+      ],
+      "noi_dung": {
+        "cong_bo": false,
+        "slides": [],
+        "tai_lieu": [],
+        "video": null
+      },
+      "tien_do": "khoi_dong"
+    },
+    {
+      "so": 2,
+      "mang": "C&B",
+      "ten_nhom": null,
+      "doi_truong": null,
+      "trang_thai_y_tuong": "chua_chot",
+      "thanh_vien": [
+        {
+          "ten": "Hoàng Thị Thúy Là",
+          "don_vi": "THG",
+          "email": ""
+        },
+        {
+          "ten": "Hoàng Thị Hồng",
+          "don_vi": "THMF",
+          "email": ""
+        },
+        {
+          "ten": "Trần Thị Thắm",
+          "don_vi": "THFC",
+          "email": ""
+        },
+        {
+          "ten": "Nguyễn Thị Yến",
+          "don_vi": "THG",
+          "email": ""
+        },
+        {
+          "ten": "Nguyễn Thị Thanh Tâm",
+          "don_vi": "MAY",
+          "email": ""
+        },
+        {
+          "ten": "Ng. T. Thùy Dương",
+          "don_vi": "TH School",
+          "email": ""
+        }
+      ],
+      "noi_dung": {
+        "cong_bo": false,
+        "slides": [],
+        "tai_lieu": [],
+        "video": null
+      },
+      "tien_do": "khoi_dong"
+    },
+    {
+      "so": 3,
+      "mang": "C&B",
+      "ten_nhom": null,
+      "doi_truong": null,
+      "trang_thai_y_tuong": "chua_chot",
+      "thanh_vien": [
+        {
+          "ten": "Đinh Thị Sỹ",
+          "don_vi": "THM",
+          "email": ""
+        },
+        {
+          "ten": "Nguyễn Thị Nhung",
+          "don_vi": "THG",
+          "email": ""
+        },
+        {
+          "ten": "Phan Thị Thanh Huyền",
+          "don_vi": "THYM",
+          "email": ""
+        },
+        {
+          "ten": "Nguyễn Thị Oanh",
+          "don_vi": "THFC",
+          "email": ""
+        },
+        {
+          "ten": "Nguyễn Thị Như Hải",
+          "don_vi": "Núi Tiên",
+          "email": ""
+        },
+        {
+          "ten": "Trịnh Xuân Giang",
+          "don_vi": "TH Bắc Ninh",
+          "email": ""
+        }
+      ],
+      "noi_dung": {
+        "cong_bo": false,
+        "slides": [],
+        "tai_lieu": [],
+        "video": null
+      },
+      "tien_do": "khoi_dong"
+    },
+    {
+      "so": 4,
+      "mang": "Tuyển dụng",
+      "ten_nhom": null,
+      "doi_truong": null,
+      "trang_thai_y_tuong": "chua_chot",
+      "thanh_vien": [
+        {
+          "ten": "Nguyễn Thanh Thủy",
+          "don_vi": "THG",
+          "email": ""
+        },
+        {
+          "ten": "Nguyễn Thị Xuân Trang",
+          "don_vi": "THM",
+          "email": ""
+        },
+        {
+          "ten": "Phạm Hà Giang",
+          "don_vi": "Núi Tiên",
+          "email": ""
+        },
+        {
+          "ten": "Nguyễn Bá Dũng",
+          "don_vi": "TH Bắc Ninh",
+          "email": ""
+        },
+        {
+          "ten": "Nguyễn Thị Dung",
+          "don_vi": "THM",
+          "email": ""
+        }
+      ],
+      "noi_dung": {
+        "cong_bo": false,
+        "slides": [],
+        "tai_lieu": [],
+        "video": null
+      },
+      "tien_do": "khoi_dong"
+    },
+    {
+      "so": 5,
+      "mang": "Tuyển dụng",
+      "ten_nhom": null,
+      "doi_truong": null,
+      "trang_thai_y_tuong": "chua_chot",
+      "thanh_vien": [
+        {
+          "ten": "Trần Khắc Duy",
+          "don_vi": "THFC",
+          "email": ""
+        },
+        {
+          "ten": "Trần Thị Dung",
+          "don_vi": "THMF",
+          "email": ""
+        },
+        {
+          "ten": "Nguyễn Minh Châu",
+          "don_vi": "THG",
+          "email": ""
+        },
+        {
+          "ten": "Phạm Công Khiêm",
+          "don_vi": "THG",
+          "email": ""
+        },
+        {
+          "ten": "Trần Thị Như Trang",
+          "don_vi": "THG",
+          "email": ""
+        }
+      ],
+      "noi_dung": {
+        "cong_bo": false,
+        "slides": [],
+        "tai_lieu": [],
+        "video": null
+      },
+      "tien_do": "khoi_dong"
+    },
+    {
+      "so": 6,
+      "mang": "Đào tạo",
+      "ten_nhom": null,
+      "doi_truong": "Bùi Thị Thân",
+      "trang_thai_y_tuong": "chua_chot",
+      "thanh_vien": [
+        {
+          "ten": "Nguyễn Thế Doanh",
+          "don_vi": "THG",
+          "email": ""
+        },
+        {
+          "ten": "Nguyễn Thị Thảo",
+          "don_vi": "THFC",
+          "email": ""
+        },
+        {
+          "ten": "Đinh Xuân Ngọc",
+          "don_vi": "THM",
+          "email": ""
+        },
+        {
+          "ten": "Bùi Thị Thân",
+          "don_vi": "THMF",
+          "email": ""
+        },
+        {
+          "ten": "Bùi Thị Hồng Thơm",
+          "don_vi": "NASU",
+          "email": ""
+        }
+      ],
+      "noi_dung": {
+        "cong_bo": false,
+        "slides": [],
+        "tai_lieu": [],
+        "video": null
+      },
+      "tien_do": "khoi_dong"
+    },
+    {
+      "so": 7,
+      "mang": "Đào tạo",
+      "ten_nhom": null,
+      "doi_truong": null,
+      "trang_thai_y_tuong": "chua_chot",
+      "thanh_vien": [
+        {
+          "ten": "Nguyễn Tuấn Anh",
+          "don_vi": "THMF",
+          "email": ""
+        },
+        {
+          "ten": "Phan Thanh Thưởng",
+          "don_vi": "THYM",
+          "email": ""
+        },
+        {
+          "ten": "Vương Thị Hương",
+          "don_vi": "MAY",
+          "email": ""
+        },
+        {
+          "ten": "Lê Văn Thơm",
+          "don_vi": "DLM",
+          "email": ""
+        },
+        {
+          "ten": "Hoàng Thị Tâm",
+          "don_vi": "MAY",
+          "email": ""
+        }
+      ],
+      "noi_dung": {
+        "cong_bo": false,
+        "slides": [],
+        "tai_lieu": [],
+        "video": null
+      },
+      "tien_do": "khoi_dong"
+    },
+    {
+      "so": 8,
+      "mang": "HRBP",
+      "ten_nhom": null,
+      "doi_truong": null,
+      "trang_thai_y_tuong": "chua_chot",
+      "thanh_vien": [
+        {
+          "ten": "Nguyễn Thùy Dương",
+          "don_vi": "THG",
+          "email": ""
+        },
+        {
+          "ten": "Phạm Lê Trúc Linh",
+          "don_vi": "THFC",
+          "email": ""
+        },
+        {
+          "ten": "Trần Quốc Toản",
+          "don_vi": "THFC",
+          "email": ""
+        },
+        {
+          "ten": "Nguyễn Như Trang",
+          "don_vi": "THMF",
+          "email": ""
+        },
+        {
+          "ten": "Hồ Thị Thảo",
+          "don_vi": "NASU",
+          "email": ""
+        },
+        {
+          "ten": "Nguyễn Thu Thủy",
+          "don_vi": "THFC",
+          "email": ""
+        },
+        {
+          "ten": "Chu Thị Mỹ Nhung",
+          "don_vi": "TFI",
+          "email": ""
+        }
+      ],
+      "noi_dung": {
+        "cong_bo": false,
+        "slides": [],
+        "tai_lieu": [],
+        "video": null
+      },
+      "tien_do": "khoi_dong"
+    },
+    {
+      "so": 9,
+      "mang": "Định biên trang trại",
+      "ten_nhom": null,
+      "doi_truong": null,
+      "trang_thai_y_tuong": "chua_chot",
+      "thanh_vien": [
+        {
+          "ten": "Dương Thành Trung",
+          "don_vi": "THYM",
+          "email": ""
+        },
+        {
+          "ten": "Cao Danh Toàn",
+          "don_vi": "TH Hà Giang",
+          "email": ""
+        },
+        {
+          "ten": "Nguyễn Thị Vân Anh",
+          "don_vi": "DLM",
+          "email": ""
+        },
+        {
+          "ten": "Nguyễn Thị Ngọc",
+          "don_vi": "THMF",
+          "email": ""
+        },
+        {
+          "ten": "Hồ Thị Phương Trinh",
+          "don_vi": "TH Phú Yên",
+          "email": ""
+        },
+        {
+          "ten": "Bùi Thị Minh Thơm",
+          "don_vi": "Núi Tiên",
+          "email": ""
+        }
+      ],
+      "noi_dung": {
+        "cong_bo": false,
+        "slides": [],
+        "tai_lieu": [],
+        "video": null
+      },
+      "tien_do": "khoi_dong"
+    }
+  ],
+  "_ghi_chu_2": "Chị Trần Thị Thu Hoa (Đồng Lâm) sẽ được xếp vào 1 trong 9 đội sau.",
+  "_ghi_chu_3": "ten_nhom: tên nhóm do đội tự đặt (nếu có), để null nếu chưa có. Không ghi chủ đề ở đây.",
+  "_ghi_chu_4": "noi_dung: khung chờ nội dung sau công bố. cong_bo=false thì trang hiện khoá 'Bí mật đến 15/12'. slides = danh sách đường dẫn ảnh, ví dụ 'data/reveal/doi-01/slides/01.webp'. Chỉ điền qua Action 'Công bố đội N'.",
+  "_ghi_chu_5": "tien_do: khoi_dong | thong_nhat | xay_dung | hoan_thien | trinh_bay (màu xem program.json > giai_doan_tien_do).",
+  "_ghi_chu_6": "email: email công ty của thành viên, dùng để nhận diện khi đăng nhập Quick (bình chọn không được chọn Team của mình). Để trống thì app so khớp theo họ tên."
+}

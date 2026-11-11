@@ -1,0 +1,48 @@
+{
+  "_ghi_chu": "Nhật ký hoạt động. Mỗi mục có thể kèm ảnh: {src, nho (ảnh thu nhỏ), team, ngay, chu_thich}. Ảnh để trong data/img/. Chỉ dùng ảnh không lộ chủ đề (không chụp màn hình chia sẻ nội dung, bảng ghi ý tưởng).",
+  "muc": [
+    {
+      "tuan": 1,
+      "ngay": "2026-11-05",
+      "tieu_de": "Kickoff",
+      "mo_ta": "HR Day Hackathon 2026 chính thức bắt đầu. 9 Team đã lập xong và bắt tay vào tìm ý tưởng.",
+      "anh": []
+    },
+    {
+      "tuan": 1,
+      "ngay": "2026-11-10",
+      "tieu_de": "Các Team họp online, lên ý tưởng",
+      "mo_ta": "Tuần đầu tiên, các Team họp trên Teams để làm quen, phân vai và đưa ra những ý tưởng đầu tiên.",
+      "anh": [
+        {
+          "src": "data/img/2026-11-09-team06.webp",
+          "nho": "data/img/2026-11-09-team06-s.webp",
+          "team": 6,
+          "ngay": "2026-11-09",
+          "chu_thich": "Team 06 họp ý tưởng"
+        },
+        {
+          "src": "data/img/2026-11-10-team01.webp",
+          "nho": "data/img/2026-11-10-team01-s.webp",
+          "team": 1,
+          "ngay": "2026-11-10",
+          "chu_thich": "Team 01 họp nhóm"
+        },
+        {
+          "src": "data/img/2026-11-10-team02.webp",
+          "nho": "data/img/2026-11-10-team02-s.webp",
+          "team": 2,
+          "ngay": "2026-11-10",
+          "chu_thich": "Team 02 họp nhóm"
+        },
+        {
+          "src": "data/img/2026-11-10-team03.webp",
+          "nho": "data/img/2026-11-10-team03-s.webp",
+          "team": 3,
+          "ngay": "2026-11-10",
+          "chu_thich": "Team 03 check-in và đưa ý tưởng"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "_ghi_chu": "Cấu hình bản công khai (GitHub Pages). chi_xem=true: trang chỉ để xem, không nhận bình chọn và không hiện lối vào quản trị.",
+  "thang_diem": 10,
+  "tieu_chi": [
+    {
+      "ma": "kha_thi",
+      "ten": "Tính khả thi",
+      "trong_so": 1
+    },
+    {
+      "ma": "tac_dong",
+      "ten": "Mức độ tác động",
+      "trong_so": 1
+    },
+    {
+      "ma": "pham_vi",
+      "ten": "Phạm vi sử dụng",
+      "trong_so": 1
+    }
+  ],
+  "mo_binh_chon": false,
+  "cong_bo_diem": false,
+  "cong_bo_binh_chon": false,
+  "chi_thanh_vien_binh_chon": true,
+  "mat_khau_btc": "a12a1c6c",
+  "ma_binh_chon": "",
+  "chi_xem": true,
+  "loi_nhan_binh_chon": "Bình chọn Team được yêu thích nhất sẽ mở sau HR Day trên kênh do Ban tổ chức thông báo."
+}

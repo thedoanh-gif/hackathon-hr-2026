@@ -1,0 +1,5 @@
+/* DINRoundOT – font thương hiệu TH, dùng cho toàn bộ trang */
+@font-face{font-family:'DINRoundOT';font-style:normal;font-weight:300;font-display:swap;src:url(../fonts/dinround-light.woff2) format('woff2')}
+@font-face{font-family:'DINRoundOT';font-style:normal;font-weight:400;font-display:swap;src:url(../fonts/dinround-regular.woff2) format('woff2')}
+@font-face{font-family:'DINRoundOT';font-style:normal;font-weight:500;font-display:swap;src:url(../fonts/dinround-medium.woff2) format('woff2')}
+@font-face{font-family:'DINRoundOT';font-style:normal;font-weight:700;font-display:swap;src:url(../fonts/dinround-bold.woff2) format('woff2')}

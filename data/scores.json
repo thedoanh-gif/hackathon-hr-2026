@@ -1,0 +1,13 @@
+{
+  "_ghi_chu": "Kết quả chấm điểm. File này do trang quản trị (admin.html) xuất ra. Chỉ đưa lên kho công khai khi công bố (Action 'Công bố kết quả'). cong_bo=false thì trang chỉ hiện trạng thái khoá.",
+  "cong_bo": false,
+  "cap_nhat_luc": null,
+  "thang_diem": 10,
+  "tieu_chi": [
+    { "ma": "kha_thi", "ten": "Tính khả thi", "trong_so": 1 },
+    { "ma": "tac_dong", "ten": "Mức độ tác động", "trong_so": 1 },
+    { "ma": "pham_vi", "ten": "Phạm vi sử dụng", "trong_so": 1 }
+  ],
+  "giam_khao": [],
+  "doi": []
+}
