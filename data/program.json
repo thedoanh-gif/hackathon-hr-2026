@@ -4,6 +4,7 @@
   "thong_diep": "Biến ý tưởng thành thực tế, có tính ứng dụng cao.",
   "tuan_hien_tai": null,
   "_tuan_hien_tai_huong_dan": "Để null thì trang tự tính theo ngày. Muốn ép một tuần cụ thể thì ghi số 1 đến 5.",
+  "ngay_kick_off": "2026-11-05",
   "ngay_hr_day": "2026-12-15",
   "ba_buoc": [
     {
@@ -23,8 +24,8 @@
   "lo_trinh": [
     {
       "tuan": 1,
-      "tu": "2026-11-05",
-      "den": "2026-11-11",
+      "tu": "2026-11-09",
+      "den": "2026-11-13",
       "tieu_de": "Lập Team",
       "mo_ta": "Lập Team, bầu đội trưởng, thảo luận các ý tưởng.",
       "moc": "05/11: KICKOFF",
@@ -32,8 +33,8 @@
     },
     {
       "tuan": 2,
-      "tu": "2026-11-12",
-      "den": "2026-11-18",
+      "tu": "2026-11-16",
+      "den": "2026-11-20",
       "tieu_de": "Xác định chủ đề và kế hoạch thực hiện",
       "mo_ta": "Các Team thống nhất chủ đề và gửi đến BTC (Doanh), thông tin này sẽ được bảo mật cho đến buổi trình bày. Team trao đổi và thống nhất kế hoạch, phân chia vai trò thực hiện.",
       "moc": "13/11: các Team gửi chủ đề cho BTC",
@@ -41,8 +42,8 @@
     },
     {
       "tuan": 3,
-      "tu": "2026-11-19",
-      "den": "2026-11-25",
+      "tu": "2026-11-23",
+      "den": "2026-11-27",
       "tieu_de": "Thực hiện theo kế hoạch, bước đầu tạo ra sản phẩm.",
       "mo_ta": "Tạo ra bản demo đầu tiên.",
       "moc": null,
@@ -50,8 +51,8 @@
     },
     {
       "tuan": 4,
-      "tu": "2026-11-26",
-      "den": "2026-12-02",
+      "tu": "2026-11-30",
+      "den": "2026-12-04",
       "tieu_de": "Dùng thử và chỉnh sửa",
       "mo_ta": "Đưa sản phẩm vào dùng thử, ứng dụng trong thực tế. Lấy phản hồi, điều chỉnh UI/UX cho phù hợp. Gửi đến BTC các hình ảnh, tư liệu hoạt động nhóm để BTC xây dựng Video (ưu tiên hình ảnh vui nhộn, video lột tả chân thực quá trình thực hiện, ...)",
       "moc": "01/12: các Team gửi cập nhật về tiến độ, gửi hình ảnh thể hiện các buổi làm việc của Team",
@@ -59,8 +60,8 @@
     },
     {
       "tuan": 5,
-      "tu": "2026-12-03",
-      "den": "2026-12-09",
+      "tu": "2026-12-07",
+      "den": "2026-12-13",
       "tieu_de": "Đóng gói sản phẩm",
       "mo_ta": "Đóng gói sản phẩm, xây dựng slide trình bày. Thực hành phân vai và demo trình bày.",
       "moc": "10/12: các Team gửi Slide đến BTC",

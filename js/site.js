@@ -85,18 +85,16 @@ function renderRoad() {
   // mỗi chặng bọc trong khung co giãn được (thu gọn mượt bằng grid-template-rows)
   $('#road-list').innerHTML = cards.map((c, i) => `<li class="road__item ${i === cur ? 'is-cur' : ''}" style="--i:${Math.abs(i - cur)}"><div class="road__clip"><div class="road__pad">${c}</div></div></li>`).join('');
 
-  // thanh tổng quan 6 chặng: luôn hiện, bấm vào để mở cả lộ trình
-  const segs = [...lo_trinh.map(s => ({ t: 'Tuần ' + s.tuan, d: fmt(s.tu), g: stageOf(s.giai_doan) })), { t: 'HR Day', d: fmt(ngay_hr_day), g: gf }];
-  $('#road-bar').innerHTML = segs.map((x, i) => `<button type="button" class="rbar__seg ${i < cur ? 'is-past' : i === cur ? 'is-cur' : ''}" data-i="${i}" style="--c:${deep(x.g.mau)};--st:${tint(x.g.mau, .78)}" aria-label="${x.t}, ${x.g.ten}">
-      <span class="rbar__fill"></span><b>${x.t}</b><small>${x.d}</small></button>`).join('');
+  // biểu đồ Gantt: mỗi tuần là một thanh trên trục ngày; bấm vào thanh để xem chi tiết tuần đó
+  $('#road-bar').innerHTML = gantt(lo_trinh, ngay_hr_day, gf, cur);
 
   // chỉ hiện một tuần: mặc định tuần hiện tại; bấm tuần khác để xem tuần đó; bấm ra ngoài thì quay về tuần hiện tại
-  const items = $$('#road-list .road__item'), segsEl = $$('#road-bar .rbar__seg'), back = $('#road-back');
+  const items = $$('#road-list .road__item'), segsEl = $$('#road-bar [data-i]'), back = $('#road-back');
   let sel = cur;
   const show = i => {
     sel = i;
     items.forEach((el, k) => el.classList.toggle('is-shown', k === i));
-    segsEl.forEach((el, k) => el.setAttribute('aria-pressed', String(k === i)));
+    segsEl.forEach(el => el.setAttribute('aria-pressed', String(+el.dataset.i === i && !el.classList.contains('g-row--kick'))));
     back.hidden = i === cur;
   };
   $('#road-bar').onclick = e => { const b = e.target.closest('[data-i]'); if (b) show(+b.dataset.i === sel && sel !== cur ? cur : +b.dataset.i); };
@@ -104,6 +102,48 @@ function renderRoad() {
   document.addEventListener('click', e => { if (sel !== cur && !e.target.closest('#road-bar, #road, #road-back')) show(cur); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && sel !== cur) show(cur); });
   show(cur);
+}
+
+
+/* ---------- Gantt lộ trình ---------- */
+function gantt(lo_trinh, hrDay, gf, cur) {
+  const DAY = 864e5, kick = state.program.ngay_kick_off || lo_trinh[0].tu;
+  const start = parseDay(kick); start.setDate(start.getDate() - ((start.getDay() + 6) % 7));  // thứ Hai của tuần Kick Off
+  const end = parseDay(hrDay); end.setDate(end.getDate() + 2);
+  const total = Math.round((end - start) / DAY);
+  const pos = d => Math.round((parseDay(d) - start) / DAY) / total * 100;
+  const len = (a, b) => (Math.round((parseDay(b) - parseDay(a)) / DAY) + 1) / total * 100;
+  const pc = v => v.toFixed(3) + '%';
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  let grid = '', ticks = '', wk = '';
+  for (let i = 0; i <= total; i++) {
+    const d = new Date(start.getTime() + i * DAY), dow = d.getDay(), left = pc(i / total * 100);
+    if (dow === 1) { grid += `<i class="g-line" style="left:${left}"></i>`; ticks += `<span style="left:${left}">${pad(d.getDate())}/${pad(d.getMonth() + 1)}</span>`; }
+    if (dow === 6 && i < total) wk += `<i class="g-wkend" style="left:${left};width:${pc(2 / total * 100)}"></i>`;
+  }
+  const inRange = today >= start && today < end;
+  const now = inRange ? `<i class="g-today" style="left:${pc(((today - start) / DAY + 0.5) / total * 100)}"><b>Hôm nay</b></i>` : '';
+  const prog = s => { const a = parseDay(s.tu).getTime(), b = parseDay(s.den).getTime() + DAY; return Math.max(0, Math.min(1, (today - a) / (b - a))); };
+  const row = (i, label, sub, bar, cls = '') => `<button type="button" class="g-row ${cls}" data-i="${i}" aria-label="${esc(label)}, ${esc(sub)}">
+      <span class="g-lab"><b>${esc(label)}</b><small>${esc(sub)}</small></span>
+      <span class="g-track">${bar}</span></button>`;
+  const rows = [];
+  const kickPast = today >= parseDay(kick);
+  rows.push(row(0, 'Kick Off', fmt(kick),
+    `<i class="g-ms" style="left:${pc(pos(kick) + 0.5 / total * 100)};--c:${deep(stageOf('khoi_dong').mau)}"><em>${fmt(kick)} · Kick Off</em></i>`, (kickPast ? 'is-past ' : '') + 'g-row--ms g-row--kick'));
+  lo_trinh.forEach((s, i) => {
+    const g = stageOf(s.giai_doan), st = i < cur ? 'is-past' : i === cur ? 'is-cur' : '';
+    const p = i === cur ? prog(s) : i < cur ? 1 : 0;
+    rows.push(row(i, 'Tuần ' + s.tuan, `${fmt(s.tu)} – ${fmt(s.den)}`,
+      `<i class="g-bar" style="left:${pc(pos(s.tu))};width:${pc(len(s.tu, s.den))};--c:${deep(g.mau)};--p:${p.toFixed(3)}" title="${esc(s.tieu_de)}"><em>${esc(g.ten)}</em></i>`, st));
+  });
+  const fin = lo_trinh.length;
+  rows.push(row(fin, 'HR Day', fmt(hrDay),
+    `<i class="g-ms g-ms--final" style="left:${pc(pos(hrDay) + 0.5 / total * 100)};--c:${gf.mau}"><em>${fmt(hrDay)} · HR Day</em></i>`, (cur >= fin ? 'is-cur ' : '') + 'g-row--ms'));
+  return `<div class="gantt"><div class="gantt__in">
+    <div class="g-head"><span class="g-lab"></span><span class="g-track g-ticks">${ticks}</span></div>
+    <div class="g-body"><div class="g-bg" aria-hidden="true"><span class="g-lab"></span><span class="g-track">${wk}${grid}${now}</span></div>${rows.join('')}</div>
+  </div></div>`;
 }
 
 const ICON = [
@@ -392,7 +432,7 @@ function openViewer(t) {
 }
 
 /* ---------- hiệu ứng theo cuộn ---------- */
-const GROUND = { dark: [22, 36, 58], light: [247, 242, 232] };
+const GROUND = { dark: [11, 21, 38], light: [238, 243, 249] };  // nền tối navy đêm, nền sáng xanh băng
 function scrollFx() {
   const secs = $$('main > .sec');
   const nav = $('#nav'), links = $$('.nav__links a'), fill = $('#road-fill'), road = $('#road');
@@ -420,7 +460,8 @@ function scrollFx() {
     root.style.setProperty('--bg', `rgb(${col})`);
     const lum = (col[0] * 299 + col[1] * 587 + col[2] * 114) / 1000;
     const light = lum > 140;
-    root.style.setProperty('--dot', light ? 'rgba(39,54,74,.10)' : 'rgba(255,255,255,.08)');
+    root.style.setProperty('--dot', light ? 'rgba(35,76,135,.07)' : 'rgba(120,170,255,.07)');
+    if (root.dataset.ground !== (light ? 'light' : 'dark')) root.dataset.ground = light ? 'light' : 'dark';  // cho nền lưới đa giác (plexus.js)
     nav.style.setProperty('--nav-fg', light ? '#27364A' : '#E8EEF7');
     nav.style.setProperty('--line', light ? 'rgba(39,54,74,.1)' : 'rgba(255,255,255,.08)');
     document.querySelector('meta[name=theme-color]').content = `rgb(${col})`;

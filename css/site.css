@@ -673,3 +673,73 @@ mark.hl{color:inherit;background:linear-gradient(transparent 58%, var(--hl,rgba(
   .panel{transition:none}
   body{transition:none}
 }
+
+/* ============ Nền công nghệ + Gantt lộ trình (11/11/2026) ============ */
+:root{ --night:#0B1526; --night-2:#13233D; --cream:#EEF3F9; }
+/* lưới kẻ ô mảnh thay cho lưới chấm, mờ dần ra mép */
+.grain{background-image:
+    linear-gradient(var(--dot,rgba(120,170,255,.06)) 1px, transparent 1px),
+    linear-gradient(90deg, var(--dot,rgba(120,170,255,.06)) 1px, transparent 1px);
+  background-size:56px 56px;opacity:1;
+  -webkit-mask-image:radial-gradient(ellipse 85% 75% at 50% 40%, #000 35%, transparent 100%);
+          mask-image:radial-gradient(ellipse 85% 75% at 50% 40%, #000 35%, transparent 100%)}
+/* quầng sáng xanh và vàng rất nhẹ ở các phần nền tối */
+.sec[data-ground=dark]::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
+  background:radial-gradient(42rem 26rem at 12% 8%, rgba(47,93,159,.30), transparent 70%),
+             radial-gradient(36rem 22rem at 92% 92%, rgba(184,138,45,.10), transparent 70%)}
+.sec[data-ground=light] .h2, .sec[data-ground=light] .step__when b{color:var(--primary-deep)}
+
+/* ---------- Gantt ---------- */
+.rbar{display:block;margin:0 0 26px}
+.gantt{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid rgba(35,76,135,.12);border-radius:16px;
+  background:rgba(255,255,255,.78);backdrop-filter:blur(6px);box-shadow:0 18px 40px -30px rgba(11,21,38,.35)}
+.gantt__in{min-width:720px;padding:6px 18px 14px}
+.g-head,.g-row,.g-bg{display:grid;grid-template-columns:132px 1fr;align-items:center}
+.g-lab{display:flex;flex-direction:column;line-height:1.25;padding-right:14px}
+.g-lab b{font-weight:700;font-size:14.5px;color:var(--text)}
+.g-lab small{font-size:12px;color:var(--text-2);letter-spacing:.02em}
+.g-track{position:relative;display:block;height:100%}
+.g-ticks{height:34px;border-bottom:1px solid rgba(35,76,135,.12)}
+.g-ticks span{position:absolute;bottom:8px;transform:translateX(-50%);font-size:11.5px;font-weight:600;letter-spacing:.04em;color:var(--text-2);white-space:nowrap}
+.g-ticks span:first-child{transform:none}
+.g-body{position:relative}
+.g-bg{position:absolute;inset:0;pointer-events:none}
+.g-bg .g-track{height:100%}
+.g-line{position:absolute;top:0;bottom:0;width:1px;background:rgba(35,76,135,.10)}
+.g-wkend{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(135deg, rgba(35,76,135,.045) 0 4px, transparent 4px 8px)}
+.g-today{position:absolute;top:-6px;bottom:0;width:0;border-left:2px dashed var(--accent);z-index:2}
+.g-today b{position:absolute;top:-30px;left:0;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.g-row{position:relative;width:100%;min-height:50px;border:0;background:none;padding:0;text-align:left;border-radius:10px;transition:background .2s}
+.g-row + .g-row{border-top:1px dashed rgba(35,76,135,.08)}
+.g-row:hover{background:rgba(47,93,159,.05)}
+.g-row[aria-pressed=true]{background:rgba(47,93,159,.08)}
+.g-row[aria-pressed=true] .g-lab b{color:var(--primary-deep)}
+.g-row .g-track{height:50px}
+/* thanh tuần */
+.g-bar{position:absolute;top:12px;height:26px;border-radius:8px;overflow:hidden;
+  background:color-mix(in srgb, var(--c) 18%, #fff);border:1px solid color-mix(in srgb, var(--c) 55%, transparent);
+  transition:transform .25s var(--ease),box-shadow .25s}
+.g-bar::before{content:"";position:absolute;inset:0;width:calc(var(--p,0) * 100%);background:var(--c);transition:width 1.2s var(--ease)}
+.g-bar em{position:relative;display:block;padding:0 9px;font-style:normal;font-size:12px;font-weight:600;line-height:24px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text)}
+.g-row.is-past .g-bar em{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.g-row.is-cur .g-bar{box-shadow:0 0 0 3px color-mix(in srgb, var(--c) 28%, transparent),0 10px 22px -12px var(--c)}
+.g-row:hover .g-bar,.g-row[aria-pressed=true] .g-bar{transform:translateY(-1px)}
+/* mốc: hình thoi */
+.g-ms{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;transform:rotate(45deg);border-radius:3px;background:var(--c);box-shadow:0 0 0 4px color-mix(in srgb, var(--c) 22%, transparent)}
+.g-ms em{position:absolute;left:18px;top:-2px;transform:rotate(-45deg);transform-origin:0 0;font-style:normal;font-size:12px;font-weight:600;white-space:nowrap;color:var(--text-2)}
+.g-ms--final{width:18px;height:18px;margin:-9px 0 0 -9px}
+.g-ms--final em{left:auto;right:22px;top:auto;bottom:-4px;transform:rotate(-45deg);transform-origin:100% 100%;color:var(--primary-deep);font-weight:700}
+.g-row.is-cur .g-lab b::after{content:"Tuần này";margin-left:8px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-deep);vertical-align:2px}
+.g-row--ms.is-cur .g-lab b::after{content:"Sắp tới"}
+@media (max-width:700px){
+  .gantt__in{min-width:640px;padding:4px 12px 12px}
+  .g-head,.g-row,.g-bg{grid-template-columns:96px 1fr}
+  .g-lab{position:sticky;left:0;z-index:3;background:rgba(255,255,255,.94)}
+}
+@media (prefers-reduced-motion:reduce){ .g-bar::before{transition:none} }
+
+/* nền lưới đa giác chuyển động (js/plexus.js) thay cho lưới kẻ ô */
+.plexus{position:fixed;inset:0;z-index:0;pointer-events:none}
+.grain{display:none}
+.is-admin .plexus{display:none}
+@media (max-width:700px){ .g-row.is-cur .g-lab b::after{display:none} }
