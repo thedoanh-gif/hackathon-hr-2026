@@ -19,7 +19,7 @@ export async function initHub(ctx) {
 
 /* ---------- lối vào trang quản trị ---------- */
 function placeEntry() {
-  if (cfg.chi_xem) return; // bản chỉ xem: không hiện lối vào quản trị
+  if (cfg.an_link_quan_tri) return; // đặt an_link_quan_tri: true trong config.json nếu muốn ẩn lối vào
   const foot = C.$('.foot');
   if (foot && !C.$('#btc-link')) foot.insertAdjacentHTML('beforeend', `<a class="foot__btc" id="btc-link" href="#quan-tri">Trang quản trị</a>`);
 }

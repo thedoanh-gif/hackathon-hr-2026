@@ -546,6 +546,7 @@ mark.hl{color:inherit;background:linear-gradient(transparent 58%, var(--hl,rgba(
 .hub__drop b{color:var(--primary-deep)}
 .hub__drop span{font-size:13.5px;color:var(--text-2)}
 .adm .muted{color:var(--text-2);font-size:14px}
+.hub__pre{max-height:260px;overflow:auto;background:#16243A;color:#E8EEF7;font-size:12.5px;padding:12px;border-radius:10px;white-space:pre-wrap}
 .hub__list{margin:0 0 16px;padding-left:20px;color:var(--text);font-size:15px;line-height:1.6}
 .adm__sm{display:block;font-size:13px!important}
 .adm .btn--ghost{border-color:rgba(39,54,74,.25);color:var(--primary-deep);background:#fff}

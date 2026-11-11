@@ -20,7 +20,7 @@ function setPath(root, path, val) {
 function cleanHtml(html) { // chỉ giữ chữ, xuống dòng và highlight
   const box = document.createElement('div'); box.innerHTML = html;
   const walk = n => [...n.childNodes].map(c => c.nodeType === 3 ? c.textContent.replace(/[&<>]/g, x => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[x]))
-    : c.nodeName === 'BR' ? '<br>' : c.nodeName === 'MARK' ? `<mark class="hl in">${walk(c)}</mark>` : walk(c)).join('');
+    : c.nodeName === 'BR' ? '<br>' : c.nodeName === 'MARK' ? `<mark class="hl in">${walk(c)}</mark>` : /^(I|EM|B|STRONG)$/.test(c.nodeName) ? `<${c.nodeName.toLowerCase()}>${walk(c)}</${c.nodeName.toLowerCase()}>` : walk(c)).join('');
   return walk(box).replace(/(<br>)+$/, '');
 }
 function applyHtml(map) { for (const [k, v] of Object.entries(map)) { const el = document.querySelector(`[data-ed="html:${k}"]`); if (el) el.innerHTML = cleanHtml(v); } }

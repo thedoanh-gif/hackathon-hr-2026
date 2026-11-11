@@ -26,16 +26,16 @@
       "tu": "2026-11-05",
       "den": "2026-11-11",
       "tieu_de": "Lập Team",
-      "mo_ta": "Lập Team, bầu đội trưởng, brainstorm các ý tưởng.",
-      "moc": "05/11: Kickoff",
+      "mo_ta": "Lập Team, bầu đội trưởng, thảo luận các ý tưởng.",
+      "moc": "05/11: KICKOFF",
       "giai_doan": "khoi_dong"
     },
     {
       "tuan": 2,
       "tu": "2026-11-12",
       "den": "2026-11-18",
-      "tieu_de": "Thống nhất chủ đề và mục đích",
-      "mo_ta": "Các Team thống nhất chủ đề và mục đích của sản phẩm.",
+      "tieu_de": "Xác định chủ đề và kế hoạch thực hiện",
+      "mo_ta": "Các Team thống nhất chủ đề và gửi đến BTC (Doanh), thông tin này sẽ được bảo mật cho đến buổi trình bày. Team trao đổi và thống nhất kế hoạch, phân chia vai trò thực hiện.",
       "moc": "13/11: các Team gửi chủ đề cho BTC",
       "giai_doan": "thong_nhat"
     },
@@ -43,7 +43,7 @@
       "tuan": 3,
       "tu": "2026-11-19",
       "den": "2026-11-25",
-      "tieu_de": "Xây dựng",
+      "tieu_de": "Thực hiện theo kế hoạch, bước đầu tạo ra sản phẩm.",
       "mo_ta": "Tạo ra bản demo đầu tiên.",
       "moc": null,
       "giai_doan": "xay_dung"
@@ -53,17 +53,17 @@
       "tu": "2026-11-26",
       "den": "2026-12-02",
       "tieu_de": "Dùng thử và chỉnh sửa",
-      "mo_ta": "Cho người dùng dùng thử, chỉnh sửa theo phản hồi.",
-      "moc": "01/12: các Team gửi tư liệu tiến độ",
+      "mo_ta": "Đưa sản phẩm vào dùng thử, ứng dụng trong thực tế. Lấy phản hồi, điều chỉnh UI/UX cho phù hợp. Gửi đến BTC các hình ảnh, tư liệu hoạt động nhóm để BTC xây dựng Video (ưu tiên hình ảnh vui nhộn, video lột tả chân thực quá trình thực hiện, ...)",
+      "moc": "01/12: các Team gửi cập nhật về tiến độ, gửi hình ảnh thể hiện các buổi làm việc của Team",
       "giai_doan": "hoan_thien"
     },
     {
       "tuan": 5,
       "tu": "2026-12-03",
       "den": "2026-12-09",
-      "tieu_de": "Đóng gói",
-      "mo_ta": "Đóng gói sản phẩm, gửi bản slide trình bày.",
-      "moc": "10/12: các Team nộp slide",
+      "tieu_de": "Đóng gói sản phẩm",
+      "mo_ta": "Đóng gói sản phẩm, xây dựng slide trình bày. Thực hành phân vai và demo trình bày.",
+      "moc": "10/12: các Team gửi Slide đến BTC",
       "giai_doan": "hoan_thien"
     }
   ],
@@ -82,10 +82,10 @@
     }
   ],
   "the_le": [
-    "Mỗi Team trình bày trực tiếp 30 phút tại HR Day.",
-    "Mỗi tuần dành 2 đến 3 giờ cùng thảo luận và xây dựng sản phẩm.",
-    "Chủ đề sản phẩm được giữ kín đến lúc Team đó trình bày.",
-    "Slide trình bày sẽ được cập nhật lên trang."
+    "Thời gian trình bày: tối đa 30 phút (đã bao gồm cả thời gian cho khán giả dùng thử nếu có).",
+    "Các Team đảm bảo tiến độ theo tuần. Tất cả các thành viên cùng tham gia xây dựng và trình bày.",
+    "Chủ đề sản phẩm được giữ kín đến lúc Team trình bày tại HR DAY 15/12.",
+    "Slide trình bày sẽ được cập nhật lên trang sau khi chương trình kết thúc."
   ],
   "hr_day": {
     "ngay": "2026-12-15",

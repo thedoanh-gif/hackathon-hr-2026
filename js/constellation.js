@@ -105,20 +105,43 @@ export function createGalaxy({ stage, canvas, tip, hint, teams, onSelect, isMobi
     group.add(glow, core, ring, label);
     scene.add(group);
     // đường thả xuống đáy: giúp mắt đoán độ sâu
-    const dropGeo = new THREE.BufferGeometry().setFromPoints([p.clone(), new THREE.Vector3(p.x, -S, p.z)]);
-    const drop = new THREE.Line(dropGeo, new THREE.LineDashedMaterial({ color: NAVY_LINE, dashSize: .12, gapSize: .14, transparent: true, opacity: .32 }));
-    drop.computeLineDistances(); scene.add(drop);
-    return { so: t.so, t, p, group, glow, core, ring, label, drop, scale: 1, target: 1, alpha: 1, alphaT: 1, ringA: 0, ringT: 0, phase: i * 1.37 };
+    return { so: t.so, t, p, group, glow, core, ring, label, scale: 1, target: 1, alpha: 1, alphaT: 1, ringA: 0, ringT: 0, phase: i * 1.37 };
   });
   // nối mỗi điểm với 2 điểm gần nhất: hình chòm sao
-  const segs = [], seen = new Set();
+  // tia sáng nối mỗi điểm với 2 điểm gần nhất: lõi sáng + quầng mờ, có luồng sáng chạy qua chạy lại
+  const pairs = [], seen = new Set();
   nodes.forEach((a, i) => {
     nodes.map((b, j) => ({ j, d: a.p.distanceTo(b.p) })).filter(o => o.j !== i).sort((x, y) => x.d - y.d).slice(0, 2)
-      .forEach(({ j }) => { const k = [i, j].sort().join('-'); if (seen.has(k)) return; seen.add(k); segs.push(a.p.x, a.p.y, a.p.z, nodes[j].p.x, nodes[j].p.y, nodes[j].p.z); });
+      .forEach(({ j }) => { const k = [i, j].sort().join('-'); if (!seen.has(k)) { seen.add(k); pairs.push([i, j]); } });
   });
-  const linkGeo = new THREE.BufferGeometry(); linkGeo.setAttribute('position', new THREE.Float32BufferAttribute(segs, 3));
-  const links = new THREE.LineSegments(linkGeo, new THREE.LineBasicMaterial({ color: GOLD_SOFT, transparent: true, opacity: .2 }));
-  scene.add(links);
+  const beamVS = `varying float vU; void main(){ vU = uv.y; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }`;
+  const beamFS = `uniform float uT, uSpeed, uPhase, uDim, uBase, uPeak; uniform vec3 uColor; varying float vU;
+    void main(){
+      float p = 0.5 + 0.5 * sin(uT * uSpeed + uPhase);          // vị trí luồng sáng, chạy qua chạy lại
+      float d = vU - p;
+      float pulse = exp(-d * d * 55.0);                        // đầu luồng sáng
+      float tail = exp(-d * d * 9.0) * 0.35;                    // vệt sáng mờ hai bên
+      float a = (uBase + (pulse + tail) * uPeak) * uDim;
+      gl_FragColor = vec4(uColor * a, a);
+    }`;
+  const UP = new THREE.Vector3(0, 1, 0);
+  const photonTex = glowTex('#FFE7A8');
+  const beams = pairs.map(([i, j], n) => {
+    const a = nodes[i].p, b = nodes[j].p, len = a.distanceTo(b);
+    const g = new THREE.Group();
+    g.position.copy(a).add(b).multiplyScalar(.5);
+    g.quaternion.setFromUnitVectors(UP, b.clone().sub(a).normalize());
+    const speed = .55 + ((n * 37) % 10) / 14, phase = n * 1.9;
+    const mk = (r, base, peak) => new THREE.Mesh(new THREE.CylinderGeometry(r, r, len, 10, 1, true), new THREE.ShaderMaterial({
+      vertexShader: beamVS, fragmentShader: beamFS, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+      uniforms: { uT: { value: 0 }, uSpeed: { value: speed }, uPhase: { value: phase }, uDim: { value: 1 }, uBase: { value: base }, uPeak: { value: peak }, uColor: { value: new THREE.Color(0xF3D58F) } }
+    }));
+    const core = mk(.014, .28, 1.5), halo = mk(.06, .05, .45);
+    const photon = new THREE.Sprite(new THREE.SpriteMaterial({ map: photonTex, blending: THREE.AdditiveBlending, depthWrite: false, transparent: true }));
+    photon.scale.setScalar(.55);
+    g.add(core, halo, photon); scene.add(g);
+    return { i, j, len, speed, phase, core, halo, photon, dim: 1 };
+  });
 
   // --- điều khiển ---
   const controls = new OrbitControls(camera, canvas);
@@ -281,9 +304,17 @@ export function createGalaxy({ stage, canvas, tip, hint, teams, onSelect, isMobi
       n.label.material.opacity = (n.alpha < .99 ? .12 + .5 * n.alpha : 1) * near;
       n.label.scale.set(1.75 * labelK, .8 * labelK, 1);
       n.label.position.y = .95 * n.scale;
-      n.drop.material.opacity = .32 * n.alpha;
     }
     dustPts.rotation.y = time * .015;
+    const focusSo = selected ?? hovered?.so ?? armed?.so ?? null;
+    for (const bm of beams) {
+      const touch = focusSo == null || nodes[bm.i].so === focusSo || nodes[bm.j].so === focusSo;
+      bm.dim += ((touch ? 1 : .18) - bm.dim) * .12;
+      for (const m of [bm.core, bm.halo]) { m.material.uniforms.uT.value = time; m.material.uniforms.uDim.value = bm.dim; }
+      const pp = .5 + .5 * Math.sin(time * bm.speed + bm.phase);
+      bm.photon.position.set(0, (pp - .5) * bm.len, 0);
+      bm.photon.material.opacity = .9 * bm.dim;
+    }
     if (selected != null || armed) { const n = nodes.find(x => x.so === (selected ?? armed?.so)); if (n && tip.classList.contains('show')) showTip(n, selected != null ? 'đang xem' : 'chạm lần nữa để mở'); }
     renderer.render(scene, camera);
     raf = requestAnimationFrame(loop);

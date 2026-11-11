@@ -2,6 +2,7 @@
 // Tiến độ Team · Nhập điểm (tay hoặc Excel từ Forms) · Kết quả · Bình chọn · Công bố & cài đặt.
 // Mọi đọc/ghi đi qua store.js.
 import { sharedGet, sharedPut, sharedList, sharedDelete, storageInfo } from './store.js';
+import { publishPanel } from './github.js';
 import { compute, tallyVotes, tokens, slug, norm } from './scoring.js';
 
 let C, cfg, members, tab = 'tien-do';
@@ -40,7 +41,7 @@ function gate(root) {
   };
 }
 
-const TABS = [['tien-do', 'Tiến độ Team', 'M4 19h16M7 16V9M12 16V5M17 16v-4'], ['noi-dung', 'Nội dung trang', 'M4 20h4L19 9l-4-4L4 16v4zM13 7l4 4'], ['cham', 'Nhập điểm', 'M4 20h4L19 9l-4-4L4 16v4zM13 7l4 4'], ['ket-qua', 'Kết quả', 'M8 21h8M12 17v4M7 4h10v5a5 5 0 01-10 0V4zM7 6H4v1a3 3 0 003 3M17 6h3v1a3 3 0 01-3 3'],
+const TABS = [['tien-do', 'Tiến độ Team', 'M4 19h16M7 16V9M12 16V5M17 16v-4'], ['github', 'Đăng lên GitHub', 'M12 3v12M7 8l5-5 5 5M5 21h14'], ['noi-dung', 'Nội dung trang', 'M4 20h4L19 9l-4-4L4 16v4zM13 7l4 4'], ['cham', 'Nhập điểm', 'M4 20h4L19 9l-4-4L4 16v4zM13 7l4 4'], ['ket-qua', 'Kết quả', 'M8 21h8M12 17v4M7 4h10v5a5 5 0 01-10 0V4zM7 6H4v1a3 3 0 003 3M17 6h3v1a3 3 0 01-3 3'],
   ['binh-chon-qt', 'Bình chọn', 'M12 21s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.6-7 10-7 10z'], ['cong-bo', 'Công bố & cài đặt', 'M12 15a3 3 0 100-6 3 3 0 000 6zM19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-2.9 1.2V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-2.9-1.2l-.1.1a2 2 0 11-2.8-2.8l.1-.1A1.7 1.7 0 003 15H3a2 2 0 110-4h.1A1.7 1.7 0 004.6 8l-.1-.1a2 2 0 112.8-2.8l.1.1A1.7 1.7 0 0010 4.1V4a2 2 0 114 0v.1a1.7 1.7 0 002.9 1.2l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 001.2 2.9H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z']];
 
 function shell(root) {
@@ -64,7 +65,7 @@ async function draw() {
   const body = C.$('#hub-body');
   C.$('#adm-title').textContent = TABS.find(t => t[0] === tab)[1];
   body.innerHTML = '<p class="muted">Đang tải…</p>';
-  ({ 'noi-dung': tabContent, 'tien-do': tabProgress, 'cham': tabScore, 'ket-qua': tabResult, 'binh-chon-qt': tabVotes, 'cong-bo': tabPublish })[tab](body);
+  ({ 'github': b => publishPanel(b, { cfg, C }), 'noi-dung': tabContent, 'tien-do': tabProgress, 'cham': tabScore, 'ket-qua': tabResult, 'binh-chon-qt': tabVotes, 'cong-bo': tabPublish })[tab](body);
   scrollTo({ top: 0 });
 }
 

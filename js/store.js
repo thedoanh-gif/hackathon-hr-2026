@@ -106,7 +106,17 @@ async function dbDelete(key) {
   } catch (e) { throw friendly(e); }
 }
 
-/* ---------- 2 · localStorage (máy cá nhân / bản chạy thử) ---------- */
+/* ---------- 2 · localStorage + data/live.json (GitHub Pages) ----------
+   live.json là bản BTC đã bấm "Đăng lên GitHub": mọi người đọc từ đây.
+   Trên máy BTC, dữ liệu đang sửa trong trình duyệt được ưu tiên hơn. */
+let live = {};
+const liveReady = (async () => {
+  try {
+    const pre = window.__HK_DATA__?.['data/live.json']; if (pre) { live = pre; return; }
+    const r = await fetch('data/live.json', { cache: 'no-cache' }); if (r.ok) live = await r.json();
+  } catch {}
+})();
+export async function liveData() { await liveReady; return live; }
 const NS = 'hk_shared:';
 const ls = {
   get(k) { try { return localStorage.getItem(k); } catch { return null; } },
@@ -118,7 +128,7 @@ const mem = new Map();
 const lsGet = key => { const raw = ls.get(NS + key) ?? mem.get(NS + key); try { return raw == null ? null : JSON.parse(raw); } catch { return null; } };
 
 /* ---------- API chung (giữ nguyên chữ ký) ---------- */
-export async function sharedGet(key) { await ready; return backend ? dbGet(key) : lsGet(key); }
+export async function sharedGet(key) { await ready; if (backend) return dbGet(key); await liveReady; return lsGet(key) ?? live[key] ?? null; }
 export async function sharedPut(key, value, { insert = false } = {}) {
   await ready;
   if (backend) return dbPut(key, value, insert);
@@ -128,8 +138,10 @@ export async function sharedPut(key, value, { insert = false } = {}) {
 export async function sharedList(prefix) {
   await ready;
   if (backend) return dbList(prefix);
-  const keys = new Set([...ls.keys(), ...mem.keys()].filter(k => k.startsWith(NS + prefix)));
-  return [...keys].map(k => ({ key: k.slice(NS.length), value: lsGet(k.slice(NS.length)) }));
+  await liveReady;
+  const keys = new Set([...ls.keys(), ...mem.keys()].filter(k => k.startsWith(NS + prefix)).map(k => k.slice(NS.length)));
+  Object.keys(live).filter(k => k.startsWith(prefix)).forEach(k => keys.add(k));
+  return [...keys].map(k => ({ key: k, value: lsGet(k) ?? live[k] ?? null }));
 }
 export async function sharedDelete(key) { await ready; if (backend) return dbDelete(key); ls.del(NS + key); mem.delete(NS + key); }
 
