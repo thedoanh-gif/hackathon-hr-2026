@@ -29,7 +29,7 @@
       "tieu_de": "Lập Team",
       "mo_ta": "Lập Team, bầu đội trưởng, thảo luận các ý tưởng.",
       "moc": "05/11: KICKOFF",
-      "giai_doan": "khoi_dong"
+      "giai_doan": "thong_nhat"
     },
     {
       "tuan": 2,
@@ -38,7 +38,7 @@
       "tieu_de": "Xác định chủ đề và kế hoạch thực hiện",
       "mo_ta": "Các Team thống nhất chủ đề và gửi đến BTC (Doanh), thông tin này sẽ được bảo mật cho đến buổi trình bày. Team trao đổi và thống nhất kế hoạch, phân chia vai trò thực hiện.",
       "moc": "13/11: các Team gửi chủ đề cho BTC",
-      "giai_doan": "thong_nhat"
+      "giai_doan": "xay_dung"
     },
     {
       "tuan": 3,
@@ -47,7 +47,7 @@
       "tieu_de": "Thực hiện theo kế hoạch, bước đầu tạo ra sản phẩm.",
       "mo_ta": "Tạo ra bản demo đầu tiên.",
       "moc": null,
-      "giai_doan": "xay_dung"
+      "giai_doan": "dung_thu"
     },
     {
       "tuan": 4,
@@ -65,7 +65,7 @@
       "tieu_de": "Đóng gói sản phẩm",
       "mo_ta": "Đóng gói sản phẩm, xây dựng slide trình bày. Thực hành phân vai và demo trình bày.",
       "moc": "10/12: các Team gửi Slide đến BTC",
-      "giai_doan": "hoan_thien"
+      "giai_doan": "trinh_bay"
     }
   ],
   "tieu_chi": [
@@ -101,17 +101,22 @@
   "giai_doan_tien_do": [
     {
       "ma": "khoi_dong",
-      "ten": "Khởi động",
-      "mau": "#FFF1CF"
+      "ten": "Kick Off",
+      "mau": "#F4F6FA"
     },
     {
       "ma": "thong_nhat",
       "ten": "Thống nhất chủ đề",
-      "mau": "#EBC24A"
+      "mau": "#F0A04B"
     },
     {
       "ma": "xay_dung",
       "ten": "Xây dựng",
+      "mau": "#EBC24A"
+    },
+    {
+      "ma": "dung_thu",
+      "ten": "Dùng thử",
       "mau": "#A57CE8"
     },
     {
@@ -121,7 +126,7 @@
     },
     {
       "ma": "trinh_bay",
-      "ten": "Trình bày",
+      "ten": "Bản trình bày",
       "mau": "#5C9EEA"
     }
   ],

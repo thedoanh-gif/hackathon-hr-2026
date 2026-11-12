@@ -41,7 +41,7 @@ const labelTex = (so, label, hex) => tex((g, w, h) => {
   g.shadowColor = 'rgba(10,18,30,.8)'; g.shadowBlur = 12;
   g.fillStyle = '#FFFFFF'; g.font = '700 92px DINRoundOT, system-ui, sans-serif';
   g.fillText(pad(so), w / 2, 104);
-  g.fillStyle = hex === '#FFF1CF' ? '#E3C27A' : hex; g.font = '500 34px DINRoundOT, system-ui, sans-serif';
+  g.fillStyle = hex === '#F4F6FA' ? '#FFFFFF' : hex; g.font = '500 34px DINRoundOT, system-ui, sans-serif';
   g.fillText(label.length > 16 ? label.slice(0, 15) + '…' : label, w / 2, 150);
 }, 384, 176);
 
@@ -94,11 +94,11 @@ export function createGalaxy({ stage, canvas, tip, hint, teams, onSelect, isMobi
   const nodes = teams.map((t, i) => {
     const p = new THREE.Vector3(...(POS[i] || [0, 0, 0]));
     const group = new THREE.Group(); group.position.copy(p);
-    const col = t.color || '#FFF1CF';
+    const col = t.color || '#F4F6FA';
     const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: getTex('g' + col, () => glowTex(col)), blending: THREE.AdditiveBlending, depthWrite: false, transparent: true }));
     glow.scale.setScalar(1.9);
     const core = new THREE.Mesh(new THREE.SphereGeometry(.15, 24, 24), new THREE.MeshBasicMaterial({ color: new THREE.Color(col).lerp(new THREE.Color(0xffffff), .55), transparent: true }));
-    const ring = new THREE.Sprite(new THREE.SpriteMaterial({ map: getTex('r' + col, () => ringTex(col === '#FFF1CF' ? '#E3C27A' : col)), depthWrite: false, transparent: true, opacity: 0 }));
+    const ring = new THREE.Sprite(new THREE.SpriteMaterial({ map: getTex('r' + col, () => ringTex(col === '#F4F6FA' ? '#E3C27A' : col)), depthWrite: false, transparent: true, opacity: 0 }));
     ring.scale.setScalar(1.25);
     const label = new THREE.Sprite(new THREE.SpriteMaterial({ map: labelTex(t.so, t.label, col), depthWrite: false, depthTest: false, transparent: true }));
     label.scale.set(1.75, .8, 1); label.position.y = .95; label.renderOrder = 10;
@@ -142,6 +142,18 @@ export function createGalaxy({ stage, canvas, tip, hint, teams, onSelect, isMobi
     g.add(core, halo, photon); scene.add(g);
     return { i, j, len, speed, phase, core, halo, photon, dim: 1 };
   });
+
+  // lưới nối đủ mọi cặp Team (cả Khối liên kết với nhau): nét rất mảnh, rất mờ để không rối;
+  // khi chọn/rê vào một Team, các đường của Team đó sáng lên, phần còn lại lặn xuống.
+  const beamKeys = new Set(pairs.map(([i, j]) => i + '-' + j));
+  const webs = [];
+  for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
+    if (beamKeys.has(i + '-' + j) || beamKeys.has(j + '-' + i)) continue;
+    const geo = new THREE.BufferGeometry().setFromPoints([nodes[i].p, nodes[j].p]);
+    const mat = new THREE.LineBasicMaterial({ color: GOLD_SOFT, transparent: true, opacity: .1, depthWrite: false, blending: THREE.AdditiveBlending });
+    const line = new THREE.Line(geo, mat); scene.add(line);
+    webs.push({ i, j, mat, a: .1 });
+  }
 
   // --- điều khiển ---
   const controls = new OrbitControls(camera, canvas);
@@ -314,6 +326,10 @@ export function createGalaxy({ stage, canvas, tip, hint, teams, onSelect, isMobi
       const pp = .5 + .5 * Math.sin(time * bm.speed + bm.phase);
       bm.photon.position.set(0, (pp - .5) * bm.len, 0);
       bm.photon.material.opacity = .9 * bm.dim;
+    }
+    for (const w of webs) {
+      const on = focusSo != null && (nodes[w.i].so === focusSo || nodes[w.j].so === focusSo);
+      w.a += ((focusSo == null ? .1 : on ? .5 : .025) - w.a) * .12; w.mat.opacity = w.a;
     }
     if (selected != null || armed) { const n = nodes.find(x => x.so === (selected ?? armed?.so)); if (n && tip.classList.contains('show')) showTip(n, selected != null ? 'đang xem' : 'chạm lần nữa để mở'); }
     renderer.render(scene, camera);

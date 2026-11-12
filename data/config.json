@@ -1,5 +1,7 @@
 {
   "_ghi_chu": "Cấu hình bản công khai (GitHub Pages). chi_xem=true: trang chỉ để xem, không nhận bình chọn và không hiện lối vào quản trị.",
+  "_sheet_url_huong_dan": "Dán đường link Web app của Google Apps Script (đuôi /exec). Có link này thì Dự đoán, Bình chọn và Xếp hạng chung cuộc chạy qua Google Sheet, kể cả trên GitHub.",
+  "sheet_url": "",
   "thang_diem": 10,
   "tieu_chi": [
     {

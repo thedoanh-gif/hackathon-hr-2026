@@ -43,10 +43,11 @@ function currentWeek(program) {
 }
 const shortArea = m => (state.program.ten_ngan_mang || {})[m] || m;
 const stages = () => state.program.giai_doan_tien_do || [];
-const stageOf = ma => stages().find(g => g.ma === ma) || stages()[0] || { ma: 'khoi_dong', ten: 'Khởi động', mau: '#FFF1CF' };
+const stageEd = g => { const i = stages().indexOf(g); return i < 0 ? '' : ` data-ed="program.giai_doan_tien_do.${i}.ten"`; };  // tên giai đoạn sửa được trên trang
+const stageOf = ma => stages().find(g => g.ma === ma) || stages()[0] || { ma: 'khoi_dong', ten: 'Khởi động', mau: '#F4F6FA' };
 // màu nhạt cho nền sáng (lộ trình): trộn màu giai đoạn với trắng
 const tint = (hex, k) => { const n = parseInt(hex.slice(1), 16); const c = [n >> 16, (n >> 8) & 255, n & 255].map(v => Math.round(v + (255 - v) * k)); return `rgb(${c})`; };
-const deep = hex => hex.toUpperCase() === '#FFF1CF' ? '#C9A24E' : hex; // "trắng vàng" quá nhạt trên nền sáng: dùng vàng nhạt đậm hơn cho viền
+const deep = hex => ['#FFF1CF', '#F4F6FA'].includes(hex.toUpperCase()) ? '#8E9AAE' : hex; // "trắng vàng" quá nhạt trên nền sáng: dùng vàng nhạt đậm hơn cho viền
 
 /* ---------- render ---------- */
 function renderHero() {
@@ -66,7 +67,7 @@ function renderRoad() {
     return `<div class="step ${cls}" style="--st:${tint(g.mau, .82)};--stb:${deep(g.mau)}">
       <div class="step__when">Tuần ${s.tuan}<b>${fmt(s.tu)} – ${fmt(s.den)}</b></div>
       <div>
-        <span class="step__stage"><i class="dot" style="--c:${deep(g.mau)}"></i>${esc(g.ten)}</span>
+        <span class="step__stage"><i class="dot" style="--c:${deep(g.mau)}"></i><span${stageEd(g)}>${esc(g.ten)}</span></span>
         <h3 class="step__title" data-ed="program.lo_trinh.${idx}.tieu_de">${esc(s.tieu_de)}</h3>
         <p class="step__desc" data-ed="program.lo_trinh.${idx}.mo_ta">${esc(s.mo_ta)}</p>
         ${s.moc ? `<span class="step__moc" data-ed="program.lo_trinh.${idx}.moc">${esc(s.moc)}</span>` : ''}
@@ -78,7 +79,7 @@ function renderRoad() {
   const cards = lo_trinh.map(card);
   cards.push(`<div class="step step--final ${w >= 6 ? 'is-now' : ''}" style="--st:${tint(gf.mau, .82)};--stb:${gf.mau}">
     <div class="step__when">HR Day<b>${fmt(ngay_hr_day)}</b></div>
-    <div><span class="step__stage"><i class="dot" style="--c:${gf.mau}"></i>${esc(gf.ten)}</span><h3 class="step__title">Trình bày tại HR Day</h3>
+    <div><span class="step__stage"><i class="dot" style="--c:${gf.mau}"></i><span${stageEd(gf)}>${esc(gf.ten)}</span></span><h3 class="step__title" data-ed="program.hr_day.tieu_de">${esc(state.program.hr_day.tieu_de || 'Trình bày tại HR Day')}</h3>
     ${state.program.hr_day.mo_ta ? `<p class="step__desc">${esc(state.program.hr_day.mo_ta)}</p>` : ''}</div>
     ${w === 6 ? '<span class="badge">Sắp tới</span>' : ''}
   </div>`);
@@ -164,7 +165,7 @@ function renderCriteria() {
 
 function renderLegend() {
   const count = ma => state.teams.filter(t => (t.tien_do || 'khoi_dong') === ma).length;
-  $('#legend-list').innerHTML = stages().map(g => `<li><i style="--c:${g.mau}"></i>${esc(g.ten)}<span>${count(g.ma)}</span></li>`).join('');
+  $('#legend-list').innerHTML = stages().map(g => `<li><i style="--c:${g.mau}"></i><b class="legend__n"${stageEd(g)}>${esc(g.ten)}</b><span>${count(g.ma)}</span></li>`).join('');
 }
 
 function renderLog() {

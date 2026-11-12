@@ -13,6 +13,8 @@ export async function initHub(ctx) {
   members = C.state.teams.flatMap(t => t.thanh_vien.map(m => ({ ten: m.ten, don_vi: m.don_vi, email: String(m.email || '').toLowerCase(), team: t.so })));
   cfg = { ...(C.state.config || {}), ...(await sharedGet('config') || {}) };
   placeEntry();
+  // có Google Sheet: Dự đoán, Bình chọn, Xếp hạng chung cuộc đi qua Sheet (chạy được cả trên GitHub Pages)
+  if (cfg.sheet_url) { const m = await import('./pickem.js'); return m.initSheet(C, cfg); }
   await refreshResults();
   await renderVote();
 }

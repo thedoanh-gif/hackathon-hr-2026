@@ -14,7 +14,7 @@ export async function initEditor(ctx) {
   bar.className = 'ed'; bar.id = 'ed-bar';
   bar.innerHTML = `<button type="button" class="ed__go" id="ed-go">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4zM13 7l4 4"/></svg>Chỉnh sửa nội dung</button>
-    <div class="ed__on" hidden><span class="ed__msg" id="ed-msg">Bấm vào chữ có viền nét đứt để sửa</span>
+    <div class="ed__on" hidden><span class="ed__msg" id="ed-msg">Bấm vào chữ có viền nét đứt để sửa · Shift+Enter để xuống dòng</span>
       <button type="button" class="ed__btn ed__btn--main" id="ed-save">Lưu</button>
       <button type="button" class="ed__btn" id="ed-cancel">Huỷ</button>
       <button type="button" class="ed__btn ed__btn--ghost" id="ed-reset" title="Bỏ toàn bộ chỉnh sửa, quay về nội dung trong file dữ liệu">Khôi phục bản gốc</button></div>`;
@@ -59,8 +59,13 @@ function keys(e) {
   if (!editing) return;
   if (e.key === 'Escape') { e.preventDefault(); stop(true); }
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') { e.preventDefault(); save(); }
-  // dữ liệu (không phải chữ tĩnh) chỉ một dòng: Enter = xong ô này
-  if (e.key === 'Enter' && e.target.isContentEditable && !e.target.dataset.ed.startsWith('html:')) { e.preventDefault(); e.target.blur(); }
+  // Enter: xuống dòng. Ô dữ liệu ngắn (tên giai đoạn, tiêu đề tuần): Enter = xong ô, Shift+Enter = xuống dòng.
+  if (e.key === 'Enter' && e.target.isContentEditable) {
+    const html = e.target.dataset.ed?.startsWith('html:');
+    const shortField = !html && /\.(ten|tieu_de|moc)$/.test(e.target.dataset.ed || '');
+    if (shortField && !e.shiftKey) { e.preventDefault(); e.target.blur(); return; }
+    e.preventDefault(); document.execCommand(html ? 'insertLineBreak' : 'insertText', false, html ? undefined : '\n');
+  }
 }
 function blockLinks(e) { if (e.target.closest('[contenteditable]') && e.target.closest('a, button')) e.preventDefault(); }
 function plainPaste(e) { if (!e.target.closest('[contenteditable]')) return; e.preventDefault(); document.execCommand('insertText', false, (e.clipboardData || window.clipboardData).getData('text')); }
@@ -73,7 +78,7 @@ async function save() {
     if (!original.has(el) || el.innerHTML === original.get(el)) continue;
     const k = el.dataset.ed;
     if (k.startsWith('html:')) html[k.slice(5)] = el.innerHTML;
-    else data[k] = el.textContent.replace(/\s+/g, ' ').trim();
+    else data[k] = el.innerText.replace(/[ \t]+/g, ' ').replace(/ *\n */g, '\n').replace(/\n{3,}/g, '\n\n').trim();
     n++;
   }
   if (n) await sharedPut('content', { data, html, cap_nhat_luc: new Date().toISOString() });

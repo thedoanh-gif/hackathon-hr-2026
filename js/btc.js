@@ -90,7 +90,7 @@ async function tabProgress(body) {
   const scores = (await sharedList('score:')).length, votes = (await sharedList('vote:')).length;
   const count = ma => teams.filter(t => (val(t, 'tien_do') || 'khoi_dong') === ma).length;
   body.innerHTML = `<div class="hub__stats hub__stats--4">
-      ${stages.map(g => `<div><b><i class="dot" style="--c:${g.mau === '#FFF1CF' ? '#C9A24E' : g.mau}"></i>${count(g.ma)}</b>${g.ten}</div>`).join('')}
+      ${stages.map(g => `<div><b><i class="dot" style="--c:${g.mau === '#F4F6FA' ? '#8E9AAE' : g.mau}"></i>${count(g.ma)}</b>${g.ten}</div>`).join('')}
     </div>
     <p class="hub__note">Cập nhật tiến độ từng Team. Màu điểm sáng trong chòm sao và bảng thông tin Team trên trang chính đổi theo. Hiện có ${scores} phiếu điểm, ${votes} phiếu bình chọn.</p>
     <div class="hub__scroll"><table class="hub__tbl hub__tbl--prog"><thead><tr><th>Team</th><th>Tiến độ</th><th>Ý tưởng</th><th>Đội trưởng</th><th>Tên nhóm</th></tr></thead><tbody>

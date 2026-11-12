@@ -743,3 +743,72 @@ mark.hl{color:inherit;background:linear-gradient(transparent 58%, var(--hl,rgba(
 .grain{display:none}
 .is-admin .plexus{display:none}
 @media (max-width:700px){ .g-row.is-cur .g-lab b::after{display:none} }
+
+/* chữ sửa trên trang: giữ dấu xuống dòng (Shift+Enter) */
+[data-ed]:not([data-ed^="html:"]){white-space:pre-line}
+.legend__n{font-weight:inherit}
+
+/* ============ Dự đoán (Pick'em) · chấm điểm giám khảo (12/11/2026) ============ */
+.sec--pick[hidden],.nav__links a[hidden]{display:none}
+.pk-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 18px}
+.pk-chip{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);font-size:13.5px;color:rgba(232,238,247,.8)}
+.pk-chip b{color:#fff;font-size:15px}
+.pk-chip i{width:8px;height:8px;border-radius:50%;background:rgba(232,238,247,.4)}
+.pk-chip.is-live i{background:#5FBF86;box-shadow:0 0 0 4px rgba(95,191,134,.2)}
+.pk-rule{font-size:13px;color:rgba(232,238,247,.6);margin-left:auto}
+.pk-rule b{color:var(--accent)}
+.pk-grid{display:grid;grid-template-columns:minmax(260px,.8fr) 1.6fr;gap:16px;align-items:start}
+.pk-card{padding:22px;border-radius:20px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+.pk-h{margin:0 0 6px;font-size:18px;color:#fff;display:flex;align-items:baseline;gap:10px}
+.pk-h small{font-size:13px;font-weight:500;color:rgba(232,238,247,.55)}
+.pk-sub{margin:0 0 14px;font-size:13.5px;color:rgba(232,238,247,.6)}
+.pk-rank{display:grid;grid-template-columns:34px 1fr;align-items:center;gap:4px 10px;margin:10px 0}
+.pk-rank>span{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18)}
+.pk-rank--1>span{background:var(--accent);border-color:var(--accent)}
+.pk-rank b{color:#fff;font-weight:600}
+.pk-rank em{grid-column:2;font-style:normal;font-size:12.5px;color:rgba(232,238,247,.55)}
+.pk-rank em.ok{color:#8FE0B0}
+.pick select{font:inherit;font-size:15px;width:100%;padding:9px 10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(11,21,38,.6);color:#fff}
+.pick select:focus{outline:2px solid var(--accent);outline-offset:1px}
+.pk-crowd{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1)}
+.pk-bar{display:grid;grid-template-columns:72px 1fr 26px;align-items:center;gap:10px;font-size:13.5px;color:rgba(232,238,247,.75);margin:6px 0}
+.pk-bar i{display:block;height:8px;border-radius:8px;width:var(--w);min-width:6px;background:linear-gradient(90deg,var(--accent),#E3C27A)}
+.pk-bar b{color:#fff;text-align:right}
+.pk-empty{margin:0;font-size:13.5px;color:rgba(232,238,247,.5)}
+.pk-teams{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pk-team{display:flex;flex-direction:column;gap:6px;padding:14px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03)}
+.pk-team__n{font-weight:700;font-size:24px;line-height:1;color:#fff}
+.pk-team__a{font-size:13px;color:rgba(232,238,247,.6)}
+.pk-team__v{font-size:14px;color:#fff;font-weight:600}
+.pk-team__ans{font-style:normal;font-size:12.5px;color:rgba(232,238,247,.6)}
+.pk-team.is-ok{border-color:#5FBF86}.pk-team.is-ok .pk-team__ans{color:#8FE0B0}
+.pk-team.is-no{border-color:rgba(217,130,111,.6)}
+.pk-save{display:flex;align-items:center;gap:14px;margin-top:16px}
+.pk-save span{font-size:14px;color:rgba(232,238,247,.75)}
+.pk-link{border:0;background:none;padding:0;margin-left:6px;color:var(--accent);font:inherit;font-size:13.5px;text-decoration:underline;cursor:pointer}
+.pk-lead{margin:0 0 18px;padding:20px 22px;border-radius:20px;border:1px solid rgba(184,138,45,.5);background:linear-gradient(160deg,rgba(184,138,45,.16),rgba(255,255,255,.03))}
+.pk-lead ol{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:6px}
+.pk-lead li{display:grid;grid-template-columns:32px 1fr auto 44px;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;font-size:14.5px;color:#E8EEF7}
+.pk-lead li.is-you{background:rgba(184,138,45,.22)}
+.pk-lead__r{font-weight:700;color:var(--accent)}
+.pk-lead__n small{color:rgba(232,238,247,.5);margin-left:6px}
+.pk-lead__m{font-size:12.5px;color:rgba(232,238,247,.55)}
+.pk-lead li b{text-align:right;color:#fff;font-size:16px}
+.board__c small{color:rgba(232,238,247,.5);font-size:12px}
+@media (max-width:900px){ .pk-grid{grid-template-columns:1fr} .pk-rule{margin-left:0} }
+@media (max-width:600px){ .pk-teams{grid-template-columns:1fr 1fr} .pk-lead li{grid-template-columns:28px 1fr 40px} .pk-lead__m{display:none} }
+/* chấm điểm */
+.judge{position:fixed;inset:0;z-index:200;background:rgba(11,21,38,.72);backdrop-filter:blur(4px);display:grid;place-items:start center;overflow:auto;padding:24px 16px}
+.judge__panel{width:min(880px,100%);background:#fff;color:var(--text);border-radius:20px;padding:22px 24px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+.judge__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.judge__head h2{margin:0;font-size:22px;color:var(--primary-deep)}
+.judge__x{border:0;background:none;font-size:28px;line-height:1;cursor:pointer;color:var(--text-2)}
+.judge__login{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
+.judge label{display:grid;gap:5px;font-size:13px;color:var(--text-2);flex:1;min-width:140px}
+.judge input{font:inherit;font-size:16px;padding:9px 10px;border-radius:10px;border:1px solid rgba(39,54,74,.2)}
+.judge__msg{margin:12px 0;font-size:14px;color:var(--text-2)}
+.judge__row{display:grid;grid-template-columns:1.2fr repeat(3,1fr) auto 70px;gap:10px;align-items:end;padding:12px 0;border-top:1px solid rgba(39,54,74,.1)}
+.judge__row.is-done .judge__t{color:var(--primary-deep)}
+.judge__t{font-size:15px;align-self:center}.judge__t small{display:block;font-weight:500;color:var(--text-2);font-size:12.5px}
+.judge__ok{font-size:12.5px;color:#2E8B57;align-self:center}
+@media (max-width:700px){ .judge__row{grid-template-columns:1fr 1fr 1fr} .judge__t{grid-column:1/-1} .judge__row .btn{grid-column:1/3} }

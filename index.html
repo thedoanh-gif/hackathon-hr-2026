@@ -28,6 +28,7 @@
       <a href="#cac-doi">Các Team</a>
       <a href="#tieu-chi">Tiêu chí</a>
       <a href="#cap-nhat">Cập nhật</a>
+      <a href="#du-doan" hidden>Dự đoán</a>
       <a href="#xep-hang">Xếp hạng</a>
       <a href="#binh-chon">Bình chọn</a>
       <a href="#hr-day">HR Day</a>
@@ -96,7 +97,7 @@
           <p class="eyebrow rv" id="teams-eyebrow">9 Team · 51 thành viên</p>
           <h2 class="h2 rv" data-ed="html:cac-doi.1">9 Team.<br>Ý tưởng phát triển<br><mark class="hl">về nhân sự</mark></h2>
         </div>
-        <p class="sub rv" data-ed="html:cac-doi.2"><i>Chạm vào một điểm để xem thành viên và thông tin của Team.</i></p>
+        <p class="sub rv" data-ed="html:cac-doi.2"><i>Chạm vào một điểm để xem thành viên và thông tin của Team. Màu sắc mỗi Team sẽ thay đổi theo tiến độ và mức độ được yêu thích trong buổi HR DAY.</i></p>
       </header>
     </div>
 
@@ -156,6 +157,20 @@
         <p class="sub rv" data-ed="html:cap-nhat.3">Ảnh và tin tiến độ chỉ ghi lại hành trình, không lộ chủ đề của Team nào.</p>
       </header>
       <ol class="log" id="log"></ol>
+    </div>
+  </section>
+
+  <!-- 5a · DỰ ĐOÁN (PICK'EM) · hiện khi config có sheet_url -->
+  <section class="sec sec--pick" id="du-doan" data-ground="dark" hidden>
+    <div class="wrap">
+      <header class="sec__head sec__head--row">
+        <div>
+          <p class="eyebrow rv" data-ed="html:du-doan.1">Pick'em</p>
+          <h2 class="h2 rv" data-ed="html:du-doan.2">Ai sẽ <mark class="hl">vô địch</mark>?</h2>
+        </div>
+        <p class="sub rv" data-ed="html:du-doan.3">Đoán Top 3 chung cuộc và loại sản phẩm của từng Team. Điểm cao nhất lên bảng Nhà tiên tri, nhận quà tại HR Day.</p>
+      </header>
+      <div class="pick" id="pick"><p class="vote__status">Đang tải…</p></div>
     </div>
   </section>
 
