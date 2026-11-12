@@ -68,6 +68,7 @@ function renderRoad() {
       <div class="step__when">Tuần ${s.tuan}<b>${fmt(s.tu)} – ${fmt(s.den)}</b></div>
       <div>
         <span class="step__stage"><i class="dot" style="--c:${deep(g.mau)}"></i><span${stageEd(g)}>${esc(g.ten)}</span></span>
+        ${s.tag ? `<a class="step__tag" href="#du-doan" data-ed="program.lo_trinh.${idx}.tag">${esc(s.tag)}</a>` : ''}
         <h3 class="step__title" data-ed="program.lo_trinh.${idx}.tieu_de">${esc(s.tieu_de)}</h3>
         <p class="step__desc" data-ed="program.lo_trinh.${idx}.mo_ta">${esc(s.mo_ta)}</p>
         ${s.moc ? `<span class="step__moc" data-ed="program.lo_trinh.${idx}.moc">${esc(s.moc)}</span>` : ''}
@@ -97,7 +98,16 @@ function renderRoad() {
     items.forEach((el, k) => el.classList.toggle('is-shown', k === i));
     segsEl.forEach(el => el.setAttribute('aria-pressed', String(+el.dataset.i === i && !el.classList.contains('g-row--kick'))));
     back.hidden = i === cur;
+    // điện thoại: Gantt cuộn ngang, đưa thanh của tuần đang xem vào khung nhìn
+    const gw = $('#road-bar .gantt'), row = segsEl.find(el => +el.dataset.i === i && !el.classList.contains('g-row--kick'));
+    const mark = row?.querySelector('.g-bar, .g-ms');
+    if (gw && mark && gw.scrollWidth > gw.clientWidth + 4) {
+      const x = mark.getBoundingClientRect().left - gw.getBoundingClientRect().left + gw.scrollLeft;
+      gw.scrollTo({ left: Math.max(0, x - row.querySelector('.g-lab').offsetWidth - 28), behavior: shown ? 'smooth' : 'auto' });
+    }
+    shown = true;
   };
+  let shown = false;
   $('#road-bar').onclick = e => { const b = e.target.closest('[data-i]'); if (b) show(+b.dataset.i === sel && sel !== cur ? cur : +b.dataset.i); };
   back.onclick = () => show(cur);
   document.addEventListener('click', e => { if (sel !== cur && !e.target.closest('#road-bar, #road, #road-back')) show(cur); });
@@ -136,7 +146,7 @@ function gantt(lo_trinh, hrDay, gf, cur) {
     const g = stageOf(s.giai_doan), st = i < cur ? 'is-past' : i === cur ? 'is-cur' : '';
     const p = i === cur ? prog(s) : i < cur ? 1 : 0;
     rows.push(row(i, 'Tuần ' + s.tuan, `${fmt(s.tu)} – ${fmt(s.den)}`,
-      `<i class="g-bar" style="left:${pc(pos(s.tu))};width:${pc(len(s.tu, s.den))};--c:${deep(g.mau)};--p:${p.toFixed(3)}" title="${esc(s.tieu_de)}"><em>${esc(g.ten)}</em></i>`, st));
+      `<i class="g-bar" style="left:${pc(pos(s.tu))};width:${pc(len(s.tu, s.den))};--c:${deep(g.mau)};--p:${p.toFixed(3)}" title="${esc(s.tieu_de)}"><em>${esc(g.ten)}</em></i>${s.tag ? `<b class="g-tag" style="left:calc(${pc(pos(s.tu) + len(s.tu, s.den))} + 8px)">${esc(s.tag)}</b>` : ''}`, st));
   });
   const fin = lo_trinh.length;
   rows.push(row(fin, 'HR Day', fmt(hrDay),

@@ -160,6 +160,7 @@ function renderPick() {
 function leaderboard(tt) {
   const you = me?.team ? tt.bxh.find(r => tokens(r.ten) === tokens(me.ten) && r.team === me.team) : null;
   return `<div class="pk-lead">
+    <img class="pk-lead__art" src="data/img/nha-tien-tri.svg" alt="" width="96" height="101">
     <h3 class="pk-h">Bảng Nhà tiên tri <small>${tt.tong} người tham gia</small></h3>
     <ol>${tt.bxh.slice(0, 10).map(r => `<li class="${r === you ? 'is-you' : ''}"><span class="pk-lead__r">${r.hang}</span><span class="pk-lead__n">${C.esc(r.ten)} <small>Team ${pad(r.team)}</small></span>
       <span class="pk-lead__m">${r.dung_vo_dich ? 'Đúng vô địch · ' : ''}${r.dung_loai} loại đúng</span><b>${r.diem}</b></li>`).join('')}</ol>
@@ -271,4 +272,17 @@ function openJudge() {
       btn.disabled = false; ok.textContent = r.ok ? 'Đã lưu' : r.loi; if (r.ok) { f.classList.add('is-done'); btn.textContent = 'Lưu lại'; }
     });
   }
+}
+
+/* ---------- Tạm giữ bí mật (config: bi_mat_binh_chon = true) ---------- */
+export function renderSecret(ctx, config) {
+  C = ctx; const when = config.bat_mi || 'tuần sau';
+  const sec = C.$('#du-doan'); if (sec) sec.hidden = false;
+  const nav = C.$('.nav__links a[href="#du-doan"]'); if (nav) nav.hidden = false;
+  const lock = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 018 0v3"/></svg>`;
+  const ghost = C.state.teams.map(t => `<div class="secret__g"><b>${pad(t.so)}</b><i></i></div>`).join('');
+  const box = (title, text, art) => `<div class="secret ${art ? "secret--art" : ""} rv in"><div class="secret__ghost" aria-hidden="true">${ghost}</div>
+    <div class="secret__msg">${art ? `<img class="secret__art" src="data/img/nha-tien-tri.svg" alt="" width="150" height="158">` : lock}<span class="secret__tag">Bí mật</span><h3>${title}</h3><p>${text}</p></div></div>`;
+  const pick = C.$('#pick'); if (pick) pick.innerHTML = box(`Bật mí ${C.esc(when)}`, 'Một trò chơi nhỏ dành cho thành viên các Team. Chuẩn bị tinh thần làm nhà tiên tri nhé.', true);
+  const vote = C.$('#vote'); if (vote) vote.innerHTML = box(`Bật mí ${C.esc(when)}`, 'Cách bình chọn Team được yêu thích nhất sẽ được công bố cùng lúc.');
 }

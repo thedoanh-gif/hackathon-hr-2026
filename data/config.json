@@ -27,5 +27,7 @@
   "mat_khau_btc": "2ce701b7",
   "ma_binh_chon": "",
   "chi_xem": true,
-  "loi_nhan_binh_chon": "Bình chọn Team được yêu thích nhất sẽ mở sau HR Day trên kênh do Ban tổ chức thông báo."
+  "loi_nhan_binh_chon": "Bình chọn Team được yêu thích nhất sẽ mở sau HR Day trên kênh do Ban tổ chức thông báo.",
+  "bi_mat_binh_chon": true,
+  "bat_mi": "tuần sau"
 }
