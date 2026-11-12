@@ -1,7 +1,7 @@
 {
   "_ghi_chu": "Dữ liệu CÔNG KHAI. Không ghi chủ đề hay ý tưởng của các đội vào đây.",
   "ten": "HR Hackathon 2026",
-  "thong_diep": "Biến ý tưởng thành thực tế, có tính ứng dụng cao.",
+  "thong_diep": "Biến ý tưởng thành ứng dụng thực tế.",
   "tuan_hien_tai": null,
   "_tuan_hien_tai_huong_dan": "Để null thì trang tự tính theo ngày. Muốn ép một tuần cụ thể thì ghi số 1 đến 5.",
   "ngay_kick_off": "2026-11-05",
@@ -26,26 +26,26 @@
       "tuan": 1,
       "tu": "2026-11-09",
       "den": "2026-11-13",
-      "tieu_de": "Lập Team",
-      "mo_ta": "Lập Team, bầu đội trưởng, thảo luận các ý tưởng.",
-      "moc": "05/11: KICKOFF",
+      "tieu_de": "Xác định chủ đề, tên sản phẩm sẽ thực hiện",
+      "mo_ta": "Lập Team, bầu nhóm trưởng\nThảo luận các ý tưởng, đánh giá và thống nhất chọn chủ đề",
+      "moc": "13/11: Gửi tên chủ đề cho BTC (Doanh).",
       "giai_doan": "thong_nhat"
     },
     {
       "tuan": 2,
       "tu": "2026-11-16",
       "den": "2026-11-20",
-      "tieu_de": "Xác định chủ đề và kế hoạch thực hiện",
-      "mo_ta": "Các Team thống nhất chủ đề và gửi đến BTC (Doanh), thông tin này sẽ được bảo mật cho đến buổi trình bày. Team trao đổi và thống nhất kế hoạch, phân chia vai trò thực hiện.",
-      "moc": "13/11: các Team gửi chủ đề cho BTC",
+      "tieu_de": "Bắt đầu xây dựng sản phẩm",
+      "mo_ta": "Sử dụng các ứng dụng AI (ưu tiên Amazon Quick) để xây dựng các tính năng sản phẩm.",
+      "moc": "",
       "giai_doan": "xay_dung"
     },
     {
       "tuan": 3,
       "tu": "2026-11-23",
       "den": "2026-11-27",
-      "tieu_de": "Thực hiện theo kế hoạch, bước đầu tạo ra sản phẩm.",
-      "mo_ta": "Tạo ra bản demo đầu tiên.",
+      "tieu_de": "Dùng thử và chỉnh sửa",
+      "mo_ta": "Đưa sản phẩm vào dùng thử, ứng dụng trong thực tế. Lấy phản hồi, điều chỉnh UI/UX cho phù hợp. Gửi đến BTC các hình ảnh, tư liệu hoạt động nhóm để BTC xây dựng Video (ưu tiên hình ảnh vui nhộn, video lột tả chân thực quá trình thực hiện, ...)",
       "moc": null,
       "giai_doan": "dung_thu"
     },
@@ -53,9 +53,9 @@
       "tuan": 4,
       "tu": "2026-11-30",
       "den": "2026-12-04",
-      "tieu_de": "Dùng thử và chỉnh sửa",
-      "mo_ta": "Đưa sản phẩm vào dùng thử, ứng dụng trong thực tế. Lấy phản hồi, điều chỉnh UI/UX cho phù hợp. Gửi đến BTC các hình ảnh, tư liệu hoạt động nhóm để BTC xây dựng Video (ưu tiên hình ảnh vui nhộn, video lột tả chân thực quá trình thực hiện, ...)",
-      "moc": "01/12: các Team gửi cập nhật về tiến độ, gửi hình ảnh thể hiện các buổi làm việc của Team",
+      "tieu_de": "Hoàn thiện sản phẩm",
+      "mo_ta": "Hoàn thiện các tính năng của sản phẩm",
+      "moc": "01/12: các Team gửi cập nhật về tiến độ, gửi hình ảnh thể hiện các buổi làm việc của Team đến BTC.",
       "giai_doan": "hoan_thien"
     },
     {
@@ -63,7 +63,7 @@
       "tu": "2026-12-07",
       "den": "2026-12-13",
       "tieu_de": "Đóng gói sản phẩm",
-      "mo_ta": "Đóng gói sản phẩm, xây dựng slide trình bày. Thực hành phân vai và demo trình bày.",
+      "mo_ta": "Đóng gói sản phẩm,\nXây dựng slide trình bày.\nThực hành phân vai và demo trình bày.",
       "moc": "10/12: các Team gửi Slide đến BTC",
       "giai_doan": "trinh_bay"
     }
